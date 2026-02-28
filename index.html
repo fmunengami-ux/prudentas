@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prutendas — AI's Impact on the Job Market</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --indigo: #2d2dff; --indigo-dark: #1a1adf; --indigo-light: #eeeeff;
+    --amber: #f5a623; --text: #111827; --text-muted: #6b7280;
+    --border: #dde1e7; --bg: #f0f2f5; --card: #ffffff;
+  }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--bg); }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--indigo); }
+  .top-bar { background: var(--indigo); color: white; font-size: 12.5px; text-align: center; padding: 8px 16px; font-weight: 500; }
+  .top-bar a { color: var(--amber); font-weight: 700; }
+  header { background: var(--card); border-bottom: 2px solid var(--border); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .header-inner { max-width: 1240px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 20px; height: 66px; }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 27px; letter-spacing: -0.5px; flex-shrink: 0; cursor: pointer; }
+  .logo .p { color: var(--indigo); } .logo .dot { color: var(--amber); }
+  nav { display: flex; align-items: center; flex: 1; }
+  .nav-item { position: relative; padding: 0 13px; height: 66px; display: flex; align-items: center; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; color: #222; transition: color 0.2s; }
+  .nav-item:hover { color: var(--indigo); }
+  .nav-item .arrow { font-size: 9px; margin-left: 4px; opacity: 0.5; }
+  .nav-item.shop-link { color: var(--indigo); }
+  .nav-item:hover .dropdown { display: block; }
+  .dropdown { display: none; position: absolute; top: 66px; left: 0; background: var(--card); border: 1px solid var(--border); border-top: 3px solid var(--indigo); box-shadow: 0 10px 32px rgba(0,0,0,0.12); min-width: 220px; z-index: 300; padding: 12px 0; border-radius: 0 0 12px 12px; }
+  .dropdown a { display: block; padding: 9px 20px; font-size: 13px; color: #333; transition: background 0.15s; }
+  .dropdown a:hover { background: var(--indigo-light); color: var(--indigo); }
+  .dd-title { padding: 6px 20px 3px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #bbb; margin-top: 6px; }
+  .dropdown hr { border: none; border-top: 1px solid var(--border); margin: 6px 0; }
+  .header-right { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+  .search-box { display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 24px; padding: 7px 14px; gap: 8px; background: var(--bg); width: 185px; transition: border-color 0.2s; }
+  .search-box:focus-within { border-color: var(--indigo); background: white; }
+  .search-box input { border: none; outline: none; font-size: 13px; color: #333; width: 100%; font-family: inherit; background: transparent; }
+  .socials-header { display: flex; align-items: center; gap: 8px; }
+  .soc-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--bg); border: 1.5px solid var(--border); transition: all 0.2s; cursor: pointer; color: #555; font-size: 13px; font-weight: 700; text-decoration: none; }
+  .soc-icon:hover { background: var(--indigo); border-color: var(--indigo); color: white; }
+  .btn-shop-nav { background: var(--indigo); color: white; padding: 9px 20px; border-radius: 24px; font-size: 13px; font-weight: 700; white-space: nowrap; transition: background 0.2s; cursor: pointer; border: none; font-family: inherit; }
+  .btn-shop-nav:hover { background: var(--indigo-dark); color: white; }
+  .news-banner { background: #1a1a2e; color: white; padding: 9px 24px; overflow: hidden; }
+  .news-banner-inner { max-width: 1240px; margin: 0 auto; display: flex; align-items: center; gap: 14px; }
+  .news-label { background: var(--amber); color: #111; font-size: 10px; font-weight: 800; letter-spacing: 1px; padding: 3px 9px; text-transform: uppercase; border-radius: 3px; flex-shrink: 0; }
+  .ticker-wrap { overflow: hidden; flex: 1; }
+  .ticker-inner { display: flex; gap: 40px; animation: ticker 32s linear infinite; white-space: nowrap; }
+  .ticker-inner:hover { animation-play-state: paused; }
+  @keyframes ticker { 0%{transform:translateX(0)}100%{transform:translateX(-50%)} }
+  .t-item { font-size: 12.5px; color: #ccc; cursor: pointer; }
+  .t-item:hover { color: var(--amber); }
+  /* HERO */
+  .hero { background: var(--bg); padding: 40px 24px 0; border-bottom: 1px solid var(--border); }
+  .hero-inner { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; animation: fadeUp 0.5s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)} }
+  .hero-text { padding: 12px 40px 48px 0; display: flex; flex-direction: column; justify-content: center; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--indigo-light); border: 1px solid #c0c0ff; color: var(--indigo); font-size: 11px; font-weight: 700; letter-spacing: 1.1px; text-transform: uppercase; padding: 5px 13px; border-radius: 24px; margin-bottom: 18px; width: fit-content; }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: 40px; font-weight: 400; line-height: 1.22; color: var(--text); margin-bottom: 16px; }
+  .hero h1 em { font-style: italic; color: var(--indigo); }
+  .hero-desc { font-size: 16px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+  .hero-byline { font-size: 13px; color: #999; margin-bottom: 24px; }
+  .hero-byline strong { color: #4a5568; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary { background: var(--indigo); color: white; padding: 12px 26px; border-radius: 8px; font-size: 14px; font-weight: 700; transition: all 0.2s; cursor: pointer; border: none; font-family: inherit; }
+  .btn-primary:hover { background: var(--indigo-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(45,45,255,0.3); color: white; }
+  .btn-secondary { background: transparent; color: var(--indigo); padding: 12px 26px; border-radius: 8px; font-size: 14px; font-weight: 600; border: 1.5px solid var(--indigo); transition: all 0.2s; cursor: pointer; font-family: inherit; }
+  .btn-secondary:hover { background: var(--indigo-light); }
+  .hero-art { background: var(--indigo-light); border-radius: 16px 16px 0 0; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 380px; }
+  .hero-art svg { width: 100%; height: 100%; }
+  /* PAGE */
+  .page-wrap { max-width: 1240px; margin: 0 auto; padding: 36px 24px; display: grid; grid-template-columns: 1fr 304px; gap: 36px; }
+  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid #1a1a1a; }
+  .section-header h2 { font-family: 'DM Serif Display', serif; font-size: 21px; font-weight: 400; }
+  .see-all { font-size: 13px; color: var(--indigo); font-weight: 600; }
+  .see-all:hover { color: var(--indigo-dark); }
+  .topic-chips { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 36px; }
+  .chip { display: inline-block; padding: 7px 15px; background: var(--card); border: 1.5px solid var(--border); border-radius: 24px; font-size: 13px; font-weight: 500; color: #444; cursor: pointer; transition: all 0.18s; }
+  .chip:hover { background: var(--indigo); color: white; border-color: var(--indigo); }
+  /* CARDS */
+  .article-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 36px; }
+  .a-card { background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+  .a-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(45,45,255,0.1); }
+  .ac-img { height: 160px; overflow: hidden; }
+  .ac-img svg { width: 100%; height: 100%; display: block; }
+  .ac-body { padding: 14px 16px 16px; }
+  .card-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--indigo); margin-bottom: 6px; }
+  .card-tag.amber { color: #b06a00; }
+  .a-card h3 { font-size: 15px; font-weight: 600; line-height: 1.45; margin-bottom: 7px; color: #111; }
+  .a-card p { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+  .card-meta { font-size: 11px; color: #bbb; margin-top: 10px; }
+  /* FEATURED ROW */
+  .featured-row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; margin-bottom: 36px; }
+  .f-big { background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); cursor: pointer; transition: box-shadow 0.2s; }
+  .f-big:hover { box-shadow: 0 8px 28px rgba(45,45,255,0.1); }
+  .fb-img { height: 210px; overflow: hidden; }
+  .fb-img svg { width: 100%; height: 100%; display: block; }
+  .fb-body { padding: 18px 20px 20px; }
+  .fb-body h3 { font-family: 'DM Serif Display', serif; font-size: 22px; font-weight: 400; line-height: 1.35; margin-bottom: 8px; }
+  .fb-body p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+  .list-panel { background: var(--card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+  .l-art { display: flex; gap: 14px; padding: 13px 15px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.15s; }
+  .l-art:last-child { border-bottom: none; }
+  .l-art:hover { background: var(--bg); }
+  .la-img { flex-shrink: 0; width: 76px; height: 76px; border-radius: 8px; overflow: hidden; }
+  .la-img svg { width: 100%; height: 100%; display: block; }
+  .la-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.7px; color: var(--indigo); margin-bottom: 4px; }
+  .l-art h4 { font-size: 14px; font-weight: 600; line-height: 1.4; color: #111; }
+  .l-art:hover h4 { color: var(--indigo); }
+  /* SHOP */
+  .shop-section { margin-bottom: 36px; }
+  .shop-banner { background: linear-gradient(135deg,#1a1a3e,#2d2dff); border-radius: 14px; padding: 26px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; gap: 20px; border: 1px solid rgba(45,45,255,0.3); }
+  .shop-banner h3 { font-family: 'DM Serif Display', serif; font-size: 21px; color: white; margin-bottom: 5px; }
+  .shop-banner p { font-size: 13px; color: #a5b4fc; }
+  .btn-amber { background: var(--amber); color: #111; padding: 11px 24px; border-radius: 8px; font-size: 14px; font-weight: 800; white-space: nowrap; cursor: pointer; border: none; font-family: inherit; transition: opacity 0.2s; }
+  .btn-amber:hover { opacity: 0.88; }
+  .shop-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  .s-card { background: var(--card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+  .s-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(45,45,255,0.1); }
+  .sc-img { height: 130px; position: relative; overflow: hidden; }
+  .sc-img svg { width: 100%; height: 100%; display: block; }
+  .sc-badge { position: absolute; top: 10px; right: 10px; background: var(--indigo); color: white; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 12px; z-index: 2; }
+  .sc-badge.bs { background: var(--amber); color: #111; }
+  .sc-body { padding: 13px 15px 15px; }
+  .sc-body h4 { font-size: 15px; font-weight: 700; line-height: 1.4; margin-bottom: 5px; color: #111; }
+  .sc-body p { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5; }
+  .sc-footer { display: flex; align-items: center; justify-content: space-between; }
+  .price { font-size: 18px; font-weight: 800; color: var(--indigo); }
+  .price s { font-size: 12px; font-weight: 400; color: #bbb; margin-left: 5px; }
+  .stars { font-size: 11px; color: var(--amber); margin-bottom: 4px; }
+  .star-ct { color: #bbb; }
+  .btn-buy { background: var(--indigo); color: white; padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; font-family: inherit; transition: background 0.2s; }
+  .btn-buy:hover { background: var(--indigo-dark); }
+  /* SIDEBAR */
+  .nl-widget { background: linear-gradient(140deg,#1a1a5e,#2d2dff); border-radius: 12px; padding: 24px; margin-bottom: 20px; color: white; }
+  .nl-widget h3 { font-family: 'DM Serif Display', serif; font-size: 19px; font-weight: 400; margin-bottom: 8px; }
+  .nl-widget p { font-size: 13px; opacity: 0.85; margin-bottom: 16px; line-height: 1.5; }
+  .nl-widget input { width: 100%; padding: 10px 14px; border-radius: 7px; border: none; font-size: 13px; margin-bottom: 10px; font-family: inherit; outline: none; }
+  .nl-widget button { width: 100%; padding: 11px; background: var(--amber); color: #111; border: none; border-radius: 7px; font-size: 14px; font-weight: 800; cursor: pointer; font-family: inherit; }
+  .sw { background: var(--card); border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); }
+  .sw h3 { font-family: 'DM Serif Display', serif; font-size: 17px; font-weight: 400; margin-bottom: 13px; padding-bottom: 10px; border-bottom: 2px solid var(--indigo); }
+  .sw-link { display: block; font-size: 13px; color: #333; padding: 7px 0; border-bottom: 1px solid var(--border); font-weight: 500; transition: color 0.2s; }
+  .sw-link:last-child { border-bottom: none; }
+  .sw-link:hover { color: var(--indigo); }
+  .social-widget { background: var(--card); border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); }
+  .social-widget h3 { font-family: 'DM Serif Display', serif; font-size: 17px; font-weight: 400; margin-bottom: 13px; padding-bottom: 10px; border-bottom: 2px solid var(--indigo); }
+  .soc-row { display: flex; flex-direction: column; gap: 9px; }
+  .soc-btn { display: flex; align-items: center; gap: 11px; padding: 10px 13px; border-radius: 9px; border: 1.5px solid var(--border); font-size: 13px; font-weight: 600; color: #333; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+  .soc-btn:hover { color: white; }
+  .sb-ico { font-size: 17px; }
+  .sb-ct { font-size: 11px; font-weight: 400; color: #aaa; margin-left: auto; }
+  .soc-btn:hover .sb-ct { color: rgba(255,255,255,0.7); }
+  .sb-x:hover{background:#1a1a1a;border-color:#1a1a1a} .sb-li:hover{background:#0077b5;border-color:#0077b5}
+  .sb-ig:hover{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);border-color:#fd1d1d}
+  .sb-tt:hover{background:#010101;border-color:#010101} .sb-yt:hover{background:#ff0000;border-color:#ff0000}
+  .shop-mini { background: var(--card); border: 2px solid var(--indigo); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  .shop-mini h3 { font-family: 'DM Serif Display', serif; font-size: 17px; font-weight: 400; margin-bottom: 14px; }
+  .m-prod { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+  .m-prod:last-of-type { border-bottom: none; margin-bottom: 12px; }
+  .mp-ico { width: 46px; height: 46px; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
+  .mp-ico svg { width: 100%; height: 100%; display: block; }
+  .mp-t { font-size: 13px; font-weight: 600; color: #111; line-height: 1.35; }
+  .mp-p { font-size: 13px; font-weight: 800; color: var(--indigo); margin-top: 3px; }
+  .m-prod:hover .mp-t { color: var(--indigo); }
+  .btn-all { display: block; background: var(--indigo); color: white; text-align: center; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: 700; transition: background 0.2s; }
+  .btn-all:hover { background: var(--indigo-dark); color: white; }
+  footer { background: #0a0a1a; color: #aaa; padding: 52px 24px 28px; margin-top: 20px; }
+  .footer-inner { max-width: 1240px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
+  .f-logo { font-family: 'DM Serif Display', serif; font-size: 26px; margin-bottom: 8px; }
+  .f-logo .p{color:var(--indigo)} .f-logo .dot{color:var(--amber)}
+  .footer-brand p { font-size: 13px; color: #555; max-width: 220px; line-height: 1.6; margin-bottom: 16px; }
+  .f-socials { display: flex; gap: 10px; }
+  .fs-ico { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #1a1a2e; border: 1px solid #2a2a45; font-size: 14px; font-weight: 700; color: #666; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+  .fs-ico:hover { background: var(--indigo); border-color: var(--indigo); color: white; }
+  .footer-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
+  .footer-col h4 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: white; margin-bottom: 13px; }
+  .footer-col a { display: block; font-size: 13px; color: #555; padding: 3px 0; transition: color 0.2s; }
+  .footer-col a:hover { color: #a5b4fc; }
+  .footer-bottom { border-top: 1px solid #1a1a2e; padding-top: 22px; margin-top: 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; color: #444; }
+  .f-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .f-links a { color: #444; transition: color 0.2s; }
+  .f-links a:hover { color: #a5b4fc; }
+  @media(max-width:1000px){.page-wrap{grid-template-columns:1fr}.article-grid{grid-template-columns:repeat(2,1fr)}.shop-grid{grid-template-columns:repeat(2,1fr)}.hero-inner{grid-template-columns:1fr}.hero-art{min-height:260px;border-radius:12px}.hero-text{padding:0 0 32px}.featured-row{grid-template-columns:1fr}.footer-grid{grid-template-columns:repeat(2,1fr)}.socials-header{display:none}}
+  @media(max-width:640px){.article-grid{grid-template-columns:1fr}.shop-grid{grid-template-columns:1fr}nav{display:none}.hero h1{font-size:30px}.shop-banner{flex-direction:column}.footer-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="top-bar">📰 In-depth coverage of AI's impact on jobs, careers &amp; the future of work. <a href="#shop">Browse our guide shop →</a></div>
+
+<header>
+  <div class="header-inner">
+    <div class="logo"><span class="p">P</span>rutendas<span class="dot">.</span></div>
+    <nav>
+      <div class="nav-item">Articles <span class="arrow">▾</span>
+        <div class="dropdown">
+          <div class="dd-title">By Topic</div>
+          <a href="#">Job Displacement &amp; Automation</a><a href="#">New Roles Created by AI</a>
+          <a href="#">Reskilling &amp; Upskilling</a><a href="#">AI in the Workplace</a>
+          <hr><div class="dd-title">By Sector</div>
+          <a href="#">Tech &amp; Engineering</a><a href="#">Finance &amp; Law</a>
+          <a href="#">Healthcare</a><a href="#">Creative Industries</a>
+          <a href="#">Browse all articles →</a>
+        </div>
+      </div>
+      <div class="nav-item">Analysis <span class="arrow">▾</span>
+        <div class="dropdown"><a href="#">Market Reports</a><a href="#">Data &amp; Research</a><a href="#">Expert Opinions</a><a href="#">Policy Watch</a><a href="#">Salary Tracker</a></div>
+      </div>
+      <div class="nav-item">Guides <span class="arrow">▾</span>
+        <div class="dropdown"><a href="#">Free Resources</a><a href="#">Career Navigation</a><a href="#">Reskilling Roadmaps</a><a href="#">Interview Prep</a></div>
+      </div>
+      <div class="nav-item shop-link" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">🛒 Shop</div>
+    </nav>
+    <div class="header-right">
+      <div class="search-box">
+        <svg width="13" height="13" fill="none" stroke="#999" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" placeholder="Search articles...">
+      </div>
+      <div class="socials-header">
+        <a href="https://twitter.com" target="_blank" class="soc-icon">𝕏</a>
+        <a href="https://linkedin.com" target="_blank" class="soc-icon">in</a>
+        <a href="https://instagram.com" target="_blank" class="soc-icon">📸</a>
+        <a href="https://tiktok.com" target="_blank" class="soc-icon">🎵</a>
+      </div>
+      <button class="btn-shop-nav" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Browse Shop</button>
+    </div>
+  </div>
+</header>
+
+<div class="news-banner">
+  <div class="news-banner-inner">
+    <span class="news-label">Live</span>
+    <div class="ticker-wrap">
+      <div class="ticker-inner">
+        <span class="t-item">• Goldman Sachs: 300 million jobs could be affected by AI automation &nbsp;&nbsp;</span>
+        <span class="t-item">• WEF report: AI will create 69 million jobs by 2027 &nbsp;&nbsp;</span>
+        <span class="t-item">• UK government launches £1.2bn reskilling fund &nbsp;&nbsp;</span>
+        <span class="t-item">• Prompt engineer salaries now top £80k at UK firms &nbsp;&nbsp;</span>
+        <span class="t-item">• OpenAI agent tools — what it means for white-collar workers &nbsp;&nbsp;</span>
+        <span class="t-item">• Goldman Sachs: 300 million jobs could be affected by AI automation &nbsp;&nbsp;</span>
+        <span class="t-item">• WEF report: AI will create 69 million jobs by 2027 &nbsp;&nbsp;</span>
+        <span class="t-item">• UK government launches £1.2bn reskilling fund &nbsp;&nbsp;</span>
+        <span class="t-item">• Prompt engineer salaries now top £80k at UK firms &nbsp;&nbsp;</span>
+        <span class="t-item">• OpenAI agent tools — what it means for white-collar workers &nbsp;&nbsp;</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">⭐ Feature Article</div>
+      <h1>White-Collar Reckoning: The Professions <em>AI Is Disrupting</em> Fastest in 2026</h1>
+      <p class="hero-desc">Law, finance, and accounting were supposed to be safe from automation. New data suggests the disruption is arriving faster than anyone predicted — and the response from employers has been swift.</p>
+      <p class="hero-byline">By <strong>Dr. Priya Mehta</strong>, Senior Editor &nbsp;·&nbsp; February 26, 2026 &nbsp;·&nbsp; 12 min read</p>
+      <div class="hero-btns">
+        <button class="btn-primary">Read the Full Article →</button>
+        <button class="btn-secondary">Browse All Articles</button>
+      </div>
+    </div>
+    <!-- HERO ART: Office worker at desk, looking at AI screen, colleague standing -->
+    <div class="hero-art">
+      <svg viewBox="0 0 560 380" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="hbg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#eeeeff"/><stop offset="100%" stop-color="#dddeff"/></linearGradient>
+          <linearGradient id="sk1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f5c8a0"/><stop offset="100%" stop-color="#e0a870"/></linearGradient>
+          <linearGradient id="sk2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#e8b888"/><stop offset="100%" stop-color="#cc9060"/></linearGradient>
+          <linearGradient id="scr" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#1a1a5e"/><stop offset="100%" stop-color="#2d2dff"/></linearGradient>
+        </defs>
+        <rect width="560" height="380" fill="url(#hbg)"/>
+        <!-- Floor -->
+        <line x1="0" y1="316" x2="560" y2="316" stroke="#c8c8e8" stroke-width="1.5"/>
+        <!-- Wall window -->
+        <rect x="44" y="34" width="108" height="140" rx="6" fill="#dde8ff" stroke="#a8b8e0" stroke-width="2"/>
+        <line x1="98" y1="34" x2="98" y2="174" stroke="#a8b8e0" stroke-width="1.5"/>
+        <line x1="44" y1="104" x2="152" y2="104" stroke="#a8b8e0" stroke-width="1.5"/>
+        <rect x="46" y="36" width="50" height="66" fill="white" opacity="0.22"/>
+        <!-- clouds -->
+        <ellipse cx="70" cy="66" rx="20" ry="11" fill="white" opacity="0.55"><animate attributeName="cx" values="70;86;70" dur="9s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="58" cy="68" rx="13" ry="8" fill="white" opacity="0.45"><animate attributeName="cx" values="58;74;58" dur="9s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="118" cy="56" rx="16" ry="9" fill="white" opacity="0.45"><animate attributeName="cx" values="118;106;118" dur="11s" repeatCount="indefinite"/></ellipse>
+
+        <!-- DESK -->
+        <rect x="160" y="256" width="350" height="16" rx="4" fill="#b0b0d8"/>
+        <rect x="164" y="270" width="8" height="48" rx="3" fill="#9898c8"/>
+        <rect x="496" y="270" width="8" height="48" rx="3" fill="#9898c8"/>
+
+        <!-- MONITOR -->
+        <rect x="318" y="154" width="156" height="104" rx="8" fill="#18183a" stroke="#5050c0" stroke-width="2"/>
+        <rect x="325" y="161" width="142" height="88" rx="5" fill="url(#scr)"/>
+        <!-- Screen glow pulse -->
+        <rect x="325" y="161" width="142" height="88" rx="5" fill="#5050ff" opacity="0.07"><animate attributeName="opacity" values="0.04;0.14;0.04" dur="3.2s" repeatCount="indefinite"/></rect>
+        <!-- AI chat on screen -->
+        <rect x="330" y="168" width="132" height="13" rx="3" fill="#3030cc" opacity="0.7"/>
+        <text x="396" y="178" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="white" font-weight="700">AI ASSISTANT</text>
+        <rect x="330" y="187" width="84" height="11" rx="4" fill="white" opacity="0.13"/>
+        <rect x="376" y="202" width="80" height="11" rx="4" fill="#4545cc" opacity="0.55"/>
+        <rect x="330" y="218" width="96" height="11" rx="4" fill="white" opacity="0.13"/>
+        <!-- blinking cursor -->
+        <rect x="430" y="220" width="2" height="8" fill="white" opacity="0.8"><animate attributeName="opacity" values="0.8;0;0.8" dur="1s" repeatCount="indefinite"/></rect>
+        <!-- monitor stand -->
+        <rect x="390" y="257" width="8" height="14" rx="2" fill="#4848a0"/>
+        <rect x="376" y="268" width="36" height="5" rx="2" fill="#4848a0"/>
+
+        <!-- KEYBOARD -->
+        <rect x="308" y="262" width="108" height="14" rx="4" fill="#8080bc" opacity="0.65"/>
+        <rect x="313" y="265" width="8" height="4" rx="1" fill="white" opacity="0.3"/>
+        <rect x="325" y="265" width="8" height="4" rx="1" fill="white" opacity="0.3"/>
+        <rect x="337" y="265" width="8" height="4" rx="1" fill="white" opacity="0.3"/>
+        <rect x="349" y="265" width="8" height="4" rx="1" fill="white" opacity="0.3"/>
+        <rect x="361" y="265" width="8" height="4" rx="1" fill="white" opacity="0.3"/>
+        <rect x="373" y="265" width="8" height="4" rx="1" fill="white" opacity="0.3"/>
+        <rect x="385" y="265" width="8" height="4" rx="1" fill="white" opacity="0.3"/>
+        <rect x="318" y="272" width="64" height="4" rx="1" fill="white" opacity="0.2"/>
+
+        <!-- COFFEE MUG -->
+        <rect x="268" y="244" width="22" height="24" rx="5" fill="#f5a623" opacity="0.85"/>
+        <path d="M290,250 Q300,250 300,256 Q300,262 290,262" fill="none" stroke="#f5a623" stroke-width="2.5" opacity="0.7"/>
+        <path d="M274,242 Q276,233 274,224" fill="none" stroke="#c8c8d8" stroke-width="1.5" opacity="0.5"><animate attributeName="d" values="M274,242 Q276,233 274,224;M274,242 Q272,233 274,224;M274,242 Q276,233 274,224" dur="2s" repeatCount="indefinite"/></path>
+        <path d="M280,240 Q282,229 280,220" fill="none" stroke="#c8c8d8" stroke-width="1.5" opacity="0.4"><animate attributeName="d" values="M280,240 Q282,229 280,220;M280,240 Q278,229 280,220;M280,240 Q282,229 280,220" dur="2.5s" repeatCount="indefinite"/></path>
+
+        <!-- CHAIR -->
+        <rect x="200" y="186" width="78" height="88" rx="10" fill="#6868b8" opacity="0.9"/>
+        <rect x="194" y="266" width="90" height="18" rx="8" fill="#5858a8"/>
+        <rect x="232" y="282" width="10" height="36" rx="4" fill="#4848a0"/>
+        <ellipse cx="237" cy="320" rx="34" ry="6" fill="#7878b8" opacity="0.35"/>
+
+        <!-- PERSON 1 — seated, looking at screen -->
+        <!-- lower body / trousers -->
+        <rect x="210" y="272" width="22" height="46" rx="8" fill="#3a3a8a"/>
+        <rect x="242" y="272" width="22" height="46" rx="8" fill="#3a3a8a"/>
+        <ellipse cx="221" cy="320" rx="14" ry="6" fill="#22226a"/>
+        <ellipse cx="253" cy="320" rx="14" ry="6" fill="#22226a"/>
+        <!-- torso/shirt -->
+        <rect x="200" y="194" width="74" height="82" rx="12" fill="#2d2dff" opacity="0.88"/>
+        <!-- neck -->
+        <rect x="228" y="190" width="18" height="18" rx="7" fill="url(#sk1)"/>
+        <!-- head -->
+        <ellipse cx="237" cy="168" rx="28" ry="30" fill="url(#sk1)"/>
+        <!-- hair -->
+        <ellipse cx="237" cy="144" rx="28" ry="14" fill="#2a1a08"/>
+        <rect x="209" y="144" width="56" height="14" rx="4" fill="#2a1a08"/>
+        <!-- eyes looking right toward screen -->
+        <ellipse cx="228" cy="167" rx="4.5" ry="5" fill="white"/>
+        <ellipse cx="246" cy="167" rx="4.5" ry="5" fill="white"/>
+        <circle cx="230" cy="168" r="3" fill="#1a1a1a"/>
+        <circle cx="248" cy="168" r="3" fill="#1a1a1a"/>
+        <!-- glasses -->
+        <rect x="221" y="163" width="13" height="11" rx="5" fill="none" stroke="#5050a0" stroke-width="1.5"/>
+        <rect x="238" y="163" width="13" height="11" rx="5" fill="none" stroke="#5050a0" stroke-width="1.5"/>
+        <line x1="234" y1="168" x2="238" y2="168" stroke="#5050a0" stroke-width="1.5"/>
+        <!-- ear -->
+        <ellipse cx="209" cy="170" rx="4" ry="6" fill="url(#sk1)"/>
+        <ellipse cx="265" cy="170" rx="4" ry="6" fill="url(#sk1)"/>
+        <!-- subtle smile -->
+        <path d="M230,178 Q237,183 244,178" fill="none" stroke="#b07040" stroke-width="1.3"/>
+        <!-- right arm → keyboard -->
+        <path d="M268,232 Q292,248 308,260" stroke="url(#sk1)" stroke-width="13" stroke-linecap="round" fill="none"/>
+        <ellipse cx="312" cy="263" rx="10" ry="7" fill="url(#sk1)"/>
+        <!-- left arm resting on desk -->
+        <path d="M205,228 Q186,244 178,256" stroke="url(#sk1)" stroke-width="13" stroke-linecap="round" fill="none"/>
+        <ellipse cx="175" cy="258" rx="10" ry="6" fill="url(#sk1)"/>
+        <!-- screen glow on face -->
+        <ellipse cx="237" cy="167" rx="27" ry="29" fill="#4040ff" opacity="0.04"><animate attributeName="opacity" values="0.02;0.09;0.02" dur="3.2s" repeatCount="indefinite"/></ellipse>
+        <!-- thought bubbles -->
+        <circle cx="278" cy="136" r="4" fill="#2d2dff" opacity="0.28"><animate attributeName="cy" values="136;128;136" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.28;0.55;0.28" dur="2s" repeatCount="indefinite"/></circle>
+        <circle cx="290" cy="120" r="6" fill="#2d2dff" opacity="0.22"><animate attributeName="cy" values="120;112;120" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.22;0.48;0.22" dur="2.5s" repeatCount="indefinite"/></circle>
+        <circle cx="305" cy="102" r="9" fill="#2d2dff" opacity="0.18"><animate attributeName="cy" values="102;94;102" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.18;0.4;0.18" dur="3s" repeatCount="indefinite"/></circle>
+        <text x="305" y="106" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#2d2dff" font-weight="700" opacity="0.65">?</text>
+
+        <!-- PERSON 2 — standing colleague, arms folded, looking concerned -->
+        <!-- legs -->
+        <rect x="454" y="256" width="18" height="62" rx="7" fill="#4a4a9a"/>
+        <rect x="478" y="256" width="18" height="62" rx="7" fill="#4a4a9a"/>
+        <ellipse cx="463" cy="320" rx="13" ry="5" fill="#2a2a6a"/>
+        <ellipse cx="487" cy="320" rx="13" ry="5" fill="#2a2a6a"/>
+        <!-- torso -->
+        <rect x="446" y="196" width="60" height="64" rx="10" fill="#8888cc" opacity="0.85"/>
+        <!-- neck -->
+        <rect x="468" y="192" width="14" height="16" rx="6" fill="url(#sk2)"/>
+        <!-- head -->
+        <ellipse cx="475" cy="174" rx="22" ry="24" fill="url(#sk2)"/>
+        <!-- hair (longer) -->
+        <ellipse cx="475" cy="154" rx="22" ry="12" fill="#3a2818"/>
+        <rect x="453" y="154" width="44" height="18" rx="4" fill="#3a2818"/>
+        <path d="M453,154 Q442,170 447,188" fill="none" stroke="#3a2818" stroke-width="6" stroke-linecap="round"/>
+        <!-- eyes — looking at seated person (left) -->
+        <ellipse cx="468" cy="173" rx="4" ry="4.5" fill="white"/>
+        <ellipse cx="482" cy="173" rx="4" ry="4.5" fill="white"/>
+        <circle cx="467" cy="174" r="2.5" fill="#1a1a1a"/>
+        <circle cx="481" cy="174" r="2.5" fill="#1a1a1a"/>
+        <!-- worried brow -->
+        <path d="M464,167 Q468,164 472,167" fill="none" stroke="#7a5030" stroke-width="1.5"/>
+        <path d="M478,167 Q482,164 486,167" fill="none" stroke="#7a5030" stroke-width="1.5"/>
+        <!-- mouth (straight/concerned) -->
+        <path d="M470,182 Q475,180 480,182" fill="none" stroke="#9a6838" stroke-width="1.3"/>
+        <!-- arms folded -->
+        <path d="M448,224 Q460,238 472,232 Q460,248 448,244" stroke="url(#sk2)" stroke-width="11" stroke-linecap="round" fill="none" opacity="0.9"/>
+        <path d="M502,224 Q490,238 478,232 Q490,248 502,244" stroke="url(#sk2)" stroke-width="11" stroke-linecap="round" fill="none" opacity="0.9"/>
+        <!-- speech bubble from colleague -->
+        <rect x="384" y="124" width="94" height="36" rx="9" fill="white" opacity="0.88" stroke="#c0c0ee" stroke-width="1.2"/>
+        <polygon points="452,160 460,172 468,160" fill="white" opacity="0.88"/>
+        <rect x="394" y="133" width="74" height="5" rx="2" fill="#c8c8ee"/>
+        <rect x="400" y="143" width="58" height="5" rx="2" fill="#ddd8ff"/>
+        <!-- notification dot on screen pulsing -->
+        <circle cx="458" cy="168" r="5" fill="#f5a623"><animate attributeName="r" values="5;7;5" dur="1.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.9;0.5;0.9" dur="1.8s" repeatCount="indefinite"/></circle>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="page-wrap">
+<div class="content-col">
+
+  <div class="section-header"><h2>Browse by Topic</h2></div>
+  <div class="topic-chips">
+    <a href="#" class="chip">🤖 Automation</a><a href="#" class="chip">💼 Job Displacement</a>
+    <a href="#" class="chip">📈 New AI Roles</a><a href="#" class="chip">🎓 Reskilling</a>
+    <a href="#" class="chip">💰 Salaries &amp; Pay</a><a href="#" class="chip">⚖️ Policy &amp; Law</a>
+    <a href="#" class="chip">🏥 Healthcare</a><a href="#" class="chip">💻 Tech Sector</a>
+    <a href="#" class="chip">🎨 Creative Industries</a><a href="#" class="chip">🌍 Global Trends</a>
+    <a href="#" class="chip">🏦 Finance</a><a href="#" class="chip">📊 Data &amp; Research</a>
+  </div>
+
+  <div class="section-header"><h2>Latest Articles</h2><a href="#" class="see-all">See all →</a></div>
+  <div class="article-grid">
+
+    <!-- CARD 1: Worker being replaced by robot (factory) -->
+    <div class="a-card">
+      <div class="ac-img">
+        <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="c1bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#eeeeff"/><stop offset="100%" stop-color="#dddeff"/></linearGradient><linearGradient id="sk1b" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f5c8a0"/><stop offset="100%" stop-color="#d8a070"/></linearGradient></defs>
+          <rect width="320" height="160" fill="url(#c1bg)"/>
+          <!-- floor -->
+          <line x1="0" y1="138" x2="320" y2="138" stroke="#c0c0e0" stroke-width="1.2"/>
+          <!-- Robot (right side, advancing) -->
+          <!-- robot body -->
+          <rect x="190" y="58" width="52" height="56" rx="8" fill="#4040a0" opacity="0.85"/>
+          <!-- robot head -->
+          <rect x="196" y="34" width="40" height="32" rx="6" fill="#5050b0" opacity="0.9"/>
+          <!-- robot eyes — scanning light -->
+          <rect x="202" y="44" width="10" height="6" rx="2" fill="#00ffcc" opacity="0.7"><animate attributeName="opacity" values="0.7;1;0.4;1;0.7" dur="1.2s" repeatCount="indefinite"/></rect>
+          <rect x="220" y="44" width="10" height="6" rx="2" fill="#00ffcc" opacity="0.7"><animate attributeName="opacity" values="0.4;1;0.7;0.4;1" dur="1.2s" repeatCount="indefinite"/></rect>
+          <!-- robot antenna -->
+          <line x1="216" y1="34" x2="216" y2="22" stroke="#6060c0" stroke-width="2.5"/>
+          <circle cx="216" cy="20" r="4" fill="#f5a623"><animate attributeName="r" values="4;6;4" dur="1s" repeatCount="indefinite"/></circle>
+          <!-- robot arms -->
+          <rect x="168" y="66" width="24" height="8" rx="4" fill="#4040a0" opacity="0.8"><animateTransform attributeName="transform" type="rotate" values="0 168 70;10 168 70;0 168 70;-10 168 70;0 168 70" dur="2s" repeatCount="indefinite"/></rect>
+          <rect x="240" y="66" width="24" height="8" rx="4" fill="#4040a0" opacity="0.8"/>
+          <!-- robot legs -->
+          <rect x="200" y="112" width="14" height="28" rx="5" fill="#3838a0"/>
+          <rect x="218" y="112" width="14" height="28" rx="5" fill="#3838a0"/>
+          <!-- robot feet -->
+          <ellipse cx="207" cy="142" rx="12" ry="5" fill="#2a2a80"/>
+          <ellipse cx="225" cy="142" rx="12" ry="5" fill="#2a2a80"/>
+          <!-- forward arrow under robot -->
+          <path d="M216,148 L216,156" stroke="#f5a623" stroke-width="2" opacity="0.6"/>
+
+          <!-- HUMAN WORKER (left side, stepping back) -->
+          <!-- legs -->
+          <rect x="78" y="106" width="14" height="34" rx="6" fill="#3a3a8a"/>
+          <rect x="96" y="110" width="14" height="30" rx="6" fill="#3a3a8a"/>
+          <!-- shoes -->
+          <ellipse cx="85" cy="141" rx="12" ry="5" fill="#1a1a5a"/>
+          <ellipse cx="103" cy="141" rx="10" ry="4" fill="#1a1a5a"/>
+          <!-- torso -->
+          <rect x="72" y="68" width="52" height="44" rx="9" fill="#6868cc" opacity="0.9"/>
+          <!-- neck + head -->
+          <rect x="92" y="64" width="14" height="14" rx="5" fill="url(#sk1b)"/>
+          <ellipse cx="99" cy="50" rx="20" ry="22" fill="url(#sk1b)"/>
+          <!-- hair -->
+          <ellipse cx="99" cy="32" rx="20" ry="10" fill="#1a1008"/>
+          <rect x="79" y="32" width="40" height="12" rx="4" fill="#1a1008"/>
+          <!-- eye wide / surprised -->
+          <ellipse cx="92" cy="49" rx="4" ry="5" fill="white"/>
+          <ellipse cx="106" cy="49" rx="4" ry="5" fill="white"/>
+          <circle cx="93" cy="50" r="3" fill="#1a1a1a"/>
+          <circle cx="107" cy="50" r="3" fill="#1a1a1a"/>
+          <!-- raised eyebrows -->
+          <path d="M89,43 Q92,40 95,43" fill="none" stroke="#7a5030" stroke-width="1.3"/>
+          <path d="M103,43 Q106,40 109,43" fill="none" stroke="#7a5030" stroke-width="1.3"/>
+          <!-- open mouth (surprised) -->
+          <ellipse cx="99" cy="62" rx="5" ry="4" fill="#c07040" opacity="0.7"/>
+          <!-- arms raised/stepping back -->
+          <path d="M72,82 Q54,68 46,56" stroke="url(#sk1b)" stroke-width="11" stroke-linecap="round" fill="none"/>
+          <path d="M124,82 Q138,72 146,62" stroke="url(#sk1b)" stroke-width="11" stroke-linecap="round" fill="none"/>
+          <!-- Motion lines behind human (moving backward) -->
+          <line x1="60" y1="88" x2="42" y2="88" stroke="#a0a0cc" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.5"/>
+          <line x1="62" y1="100" x2="44" y2="100" stroke="#a0a0cc" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.4"/>
+          <line x1="64" y1="112" x2="46" y2="112" stroke="#a0a0cc" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.3"/>
+        </svg>
+      </div>
+      <div class="ac-body">
+        <div class="card-tag">Automation</div>
+        <h3>The Factory Floor in 2026: How Robots Changed Manufacturing Employment</h3>
+        <p>New data reveals automation eliminated roles but created unexpected demand for human oversight workers.</p>
+        <div class="card-meta">Feb 26, 2026 · 7 min read</div>
+      </div>
+    </div>
+
+    <!-- CARD 2: Two people, one with growing pay packet (AI skills) -->
+    <div class="a-card">
+      <div class="ac-img">
+        <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="c2bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fff8ec"/><stop offset="100%" stop-color="#ffefd0"/></linearGradient><linearGradient id="sk2b" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#e8b888"/><stop offset="100%" stop-color="#c89060"/></linearGradient><linearGradient id="sk3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f8d8b0"/><stop offset="100%" stop-color="#e0b080"/></linearGradient></defs>
+          <rect width="320" height="160" fill="url(#c2bg)"/>
+          <line x1="0" y1="144" x2="320" y2="144" stroke="#ddc898" stroke-width="1"/>
+          <!-- Person A (left, no AI skills — smaller) -->
+          <!-- legs -->
+          <rect x="54" y="110" width="11" height="36" rx="5" fill="#6868a8" opacity="0.7"/>
+          <rect x="68" y="110" width="11" height="36" rx="5" fill="#6868a8" opacity="0.7"/>
+          <ellipse cx="60" cy="147" rx="10" ry="4" fill="#4848a0" opacity="0.7"/>
+          <ellipse cx="74" cy="147" rx="10" ry="4" fill="#4848a0" opacity="0.7"/>
+          <!-- torso -->
+          <rect x="50" y="76" width="40" height="40" rx="8" fill="#9090c8" opacity="0.75"/>
+          <!-- neck/head -->
+          <rect x="64" y="72" width="12" height="12" rx="5" fill="url(#sk2b)"/>
+          <ellipse cx="70" cy="60" rx="16" ry="18" fill="url(#sk2b)"/>
+          <ellipse cx="70" cy="44" rx="16" ry="10" fill="#2a1808" opacity="0.8"/>
+          <rect x="54" y="44" width="32" height="10" rx="4" fill="#2a1808" opacity="0.8"/>
+          <!-- eyes down (dejected) -->
+          <ellipse cx="65" cy="60" rx="3" ry="3.5" fill="white"/>
+          <ellipse cx="75" cy="60" rx="3" ry="3.5" fill="white"/>
+          <circle cx="65.5" cy="62" r="2" fill="#1a1a1a"/>
+          <circle cx="75.5" cy="62" r="2" fill="#1a1a1a"/>
+          <path d="M64,69 Q70,67 76,69" fill="none" stroke="#a07040" stroke-width="1.2"/>
+          <!-- arms down at side -->
+          <path d="M50,92 Q38,104 36,118" stroke="url(#sk2b)" stroke-width="9" stroke-linecap="round" fill="none" opacity="0.7"/>
+          <path d="M90,92 Q102,104 104,118" stroke="url(#sk2b)" stroke-width="9" stroke-linecap="round" fill="none" opacity="0.7"/>
+          <!-- small coin above person A -->
+          <circle cx="70" cy="28" r="9" fill="#c8c8e8" opacity="0.7"/>
+          <text x="70" y="32" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#6868b0" font-weight="700">£</text>
+
+          <!-- Person B (right, with AI skills — taller/bigger, raised arms) -->
+          <rect x="212" y="94" width="13" height="52" rx="6" fill="#2d2dff" opacity="0.85"/>
+          <rect x="230" y="94" width="13" height="52" rx="6" fill="#2d2dff" opacity="0.85"/>
+          <ellipse cx="218.5" cy="147" rx="12" ry="5" fill="#1a1adf"/>
+          <ellipse cx="236.5" cy="147" rx="12" ry="5" fill="#1a1adf"/>
+          <!-- torso -->
+          <rect x="206" y="54" width="52" height="46" rx="9" fill="#2d2dff" opacity="0.88"/>
+          <!-- neck/head -->
+          <rect x="226" y="50" width="14" height="14" rx="6" fill="url(#sk3)"/>
+          <ellipse cx="233" cy="36" rx="20" ry="22" fill="url(#sk3)"/>
+          <ellipse cx="233" cy="18" rx="20" ry="10" fill="#1a0808"/>
+          <rect x="213" y="18" width="40" height="12" rx="4" fill="#1a0808"/>
+          <!-- big smile -->
+          <ellipse cx="225" cy="35" rx="3.5" ry="4" fill="white"/>
+          <ellipse cx="241" cy="35" rx="3.5" ry="4" fill="white"/>
+          <circle cx="226" cy="36" r="2.5" fill="#1a1a1a"/>
+          <circle cx="242" cy="36" r="2.5" fill="#1a1a1a"/>
+          <path d="M224,46 Q233,52 242,46" fill="none" stroke="#c07840" stroke-width="1.4"/>
+          <!-- arms raised in celebration -->
+          <path d="M206,72 Q185,54 174,40" stroke="url(#sk3)" stroke-width="11" stroke-linecap="round" fill="none"/>
+          <path d="M258,72 Q279,54 290,40" stroke="url(#sk3)" stroke-width="11" stroke-linecap="round" fill="none"/>
+          <!-- big golden coin above -->
+          <circle cx="233" cy="12" r="14" fill="#f5a623" opacity="0.9"><animate attributeName="r" values="14;16;14" dur="2s" repeatCount="indefinite"/></circle>
+          <text x="233" y="17" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="white" font-weight="800">+23%</text>
+          <!-- sparkles -->
+          <circle cx="174" cy="38" r="3" fill="#f5a623" opacity="0.7"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.3s" repeatCount="indefinite"/></circle>
+          <circle cx="290" cy="38" r="3" fill="#f5a623" opacity="0.7"><animate attributeName="opacity" values="0.2;0.7;0.2" dur="1.3s" repeatCount="indefinite"/></circle>
+          <circle cx="233" cy="2" r="2" fill="#f5a623" opacity="0.6"><animate attributeName="cy" values="2;-4;2" dur="1.5s" repeatCount="indefinite"/></circle>
+
+          <!-- VS divider -->
+          <text x="160" y="100" text-anchor="middle" font-family="DM Serif Display,serif" font-size="20" fill="#c0a880" opacity="0.6">vs</text>
+        </svg>
+      </div>
+      <div class="ac-body">
+        <div class="card-tag amber">Salaries</div>
+        <h3>AI Skills Premium: Employees Using AI Tools Now Earn 23% More</h3>
+        <p>A Stanford study tracked 4,000 workers over 18 months. The wage gap is accelerating fast.</p>
+        <div class="card-meta">Feb 25, 2026 · 5 min read</div>
+      </div>
+    </div>
+
+    <!-- CARD 3: Person reading/studying policy doc -->
+    <div class="a-card">
+      <div class="ac-img">
+        <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="c3bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#edfaf3"/><stop offset="100%" stop-color="#d4f0e4"/></linearGradient><linearGradient id="sk3c" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f5c8a0"/><stop offset="100%" stop-color="#e0a070"/></linearGradient></defs>
+          <rect width="320" height="160" fill="url(#c3bg)"/>
+          <line x1="0" y1="144" x2="320" y2="144" stroke="#a8d8b8" stroke-width="1"/>
+          <!-- table edge -->
+          <rect x="60" y="118" width="200" height="10" rx="3" fill="#a0c8b0" opacity="0.6"/>
+          <!-- person seated, reading large document -->
+          <!-- chair suggestion -->
+          <rect x="126" y="118" width="68" height="6" rx="4" fill="#8888c0" opacity="0.5"/>
+          <!-- legs -->
+          <rect x="136" y="122" width="12" height="24" rx="5" fill="#3a3a8a"/>
+          <rect x="152" y="122" width="12" height="24" rx="5" fill="#3a3a8a"/>
+          <ellipse cx="142" cy="147" rx="10" ry="4" fill="#2a2a70"/>
+          <ellipse cx="158" cy="147" rx="10" ry="4" fill="#2a2a70"/>
+          <!-- torso -->
+          <rect x="126" y="78" width="48" height="48" rx="9" fill="#1a7a4a" opacity="0.75"/>
+          <!-- neck/head -->
+          <rect x="144" y="74" width="12" height="12" rx="5" fill="url(#sk3c)"/>
+          <ellipse cx="150" cy="60" rx="18" ry="20" fill="url(#sk3c)"/>
+          <!-- hair tied back -->
+          <ellipse cx="150" cy="43" rx="18" ry="9" fill="#1a0808"/>
+          <ellipse cx="168" cy="55" rx="5" ry="8" fill="#1a0808"/>
+          <!-- eyes looking down at doc -->
+          <ellipse cx="144" cy="60" rx="3.5" ry="3" fill="white"/>
+          <ellipse cx="156" cy="60" rx="3.5" ry="3" fill="white"/>
+          <circle cx="144.5" cy="61.5" r="2.2" fill="#1a1a1a"/>
+          <circle cx="156.5" cy="61.5" r="2.2" fill="#1a1a1a"/>
+          <!-- focused mouth -->
+          <path d="M145,70 Q150,72 155,70" fill="none" stroke="#a07040" stroke-width="1.2"/>
+          <!-- arms holding doc -->
+          <path d="M126,96 Q102,108 90,116" stroke="url(#sk3c)" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <path d="M174,96 Q198,108 210,116" stroke="url(#sk3c)" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <!-- LARGE DOCUMENT on table -->
+          <rect x="76" y="88" width="84" height="106" rx="6" fill="white" opacity="0.92" stroke="#80c8a0" stroke-width="1.5"/>
+          <rect x="84" y="100" width="68" height="5" rx="2" fill="#2d2dff" opacity="0.5"/>
+          <text x="118" y="112" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#1a5a3a" font-weight="700">EU AI ACT</text>
+          <rect x="84" y="116" width="58" height="4" rx="2" fill="#a0d8b8"/>
+          <rect x="84" y="124" width="50" height="4" rx="2" fill="#b8e8c8"/>
+          <rect x="84" y="132" width="62" height="4" rx="2" fill="#a0d8b8"/>
+          <rect x="84" y="140" width="44" height="4" rx="2" fill="#b8e8c8"/>
+          <rect x="84" y="148" width="56" height="4" rx="2" fill="#a0d8b8"/>
+          <!-- magnifying glass over doc -->
+          <circle cx="196" cy="100" r="22" fill="white" opacity="0.5" stroke="#40a060" stroke-width="2"/>
+          <circle cx="196" cy="100" r="16" fill="#e8f8f0" opacity="0.6"/>
+          <line x1="210" y1="114" x2="222" y2="126" stroke="#40a060" stroke-width="3" stroke-linecap="round"/>
+          <!-- text inside magnifier -->
+          <text x="196" y="97" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#1a5a3a" font-weight="700">§4.2</text>
+          <text x="196" y="107" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="6" fill="#2a7a4a">WORKERS</text>
+          <!-- highlight glow on magnifier -->
+          <circle cx="196" cy="100" r="16" fill="#40a060" opacity="0.04"><animate attributeName="opacity" values="0.04;0.1;0.04" dur="2.5s" repeatCount="indefinite"/></circle>
+        </svg>
+      </div>
+      <div class="ac-body">
+        <div class="card-tag">Policy</div>
+        <h3>The EU AI Act's Employment Clauses: What Every Worker Should Know</h3>
+        <p>Buried inside the landmark legislation are protections — and loopholes — that will define AI's role in hiring.</p>
+        <div class="card-meta">Feb 24, 2026 · 8 min read</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED + LIST -->
+  <div class="section-header"><h2>Top Reads This Week</h2><a href="#" class="see-all">See all →</a></div>
+  <div class="featured-row">
+    <div class="f-big">
+      <div class="fb-img">
+        <!-- Lawyer/accountant/consultant at desk looking worried at notification on screen -->
+        <svg viewBox="0 0 480 210" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="fb1bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#eeeeff"/><stop offset="100%" stop-color="#dddeff"/></linearGradient><linearGradient id="sk4" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f5c8a0"/><stop offset="100%" stop-color="#d8a070"/></linearGradient><linearGradient id="sk5" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#e8b888"/><stop offset="100%" stop-color="#c89060"/></linearGradient></defs>
+          <rect width="480" height="210" fill="url(#fb1bg)"/>
+          <!-- floor/desk area -->
+          <line x1="0" y1="170" x2="480" y2="170" stroke="#c0c0e0" stroke-width="1"/>
+          <rect x="60" y="145" width="360" height="12" rx="3" fill="#b0b0d8" opacity="0.7"/>
+
+          <!-- PERSON (lawyer, suit, looking alarmed at screen) -->
+          <!-- legs -->
+          <rect x="156" y="155" width="16" height="18" rx="5" fill="#2a2a5a"/>
+          <rect x="178" y="155" width="16" height="18" rx="5" fill="#2a2a5a"/>
+          <ellipse cx="164" cy="174" rx="12" ry="4" fill="#1a1a4a"/>
+          <ellipse cx="186" cy="174" rx="12" ry="4" fill="#1a1a4a"/>
+          <!-- torso (dark suit) -->
+          <rect x="146" y="100" width="62" height="62" rx="10" fill="#2a2a5a" opacity="0.95"/>
+          <!-- suit lapels -->
+          <path d="M168,100 Q177,112 177,120" fill="none" stroke="#3a3a6a" stroke-width="5" stroke-linecap="round"/>
+          <path d="M186,100 Q177,112 177,120" fill="none" stroke="#3a3a6a" stroke-width="5" stroke-linecap="round"/>
+          <!-- shirt/tie suggestion -->
+          <rect x="173" y="100" width="8" height="22" rx="2" fill="white" opacity="0.3"/>
+          <rect x="174" y="106" width="6" height="18" rx="2" fill="#f5a623" opacity="0.5"/>
+          <!-- neck + head -->
+          <rect x="169" y="96" width="16" height="14" rx="6" fill="url(#sk4)"/>
+          <ellipse cx="177" cy="78" rx="22" ry="24" fill="url(#sk4)"/>
+          <!-- hair (receding slightly) -->
+          <ellipse cx="177" cy="58" rx="22" ry="11" fill="#1a1008" opacity="0.9"/>
+          <rect x="155" y="58" width="44" height="14" rx="4" fill="#1a1008" opacity="0.9"/>
+          <!-- eyes wide open (alarmed) -->
+          <ellipse cx="170" cy="78" rx="5" ry="6" fill="white"/>
+          <ellipse cx="184" cy="78" rx="5" ry="6" fill="white"/>
+          <circle cx="171" cy="79" r="3.5" fill="#1a1a1a"/>
+          <circle cx="185" cy="79" r="3.5" fill="#1a1a1a"/>
+          <!-- raised eyebrows -->
+          <path d="M166,70 Q170,66 174,70" fill="none" stroke="#7a5030" stroke-width="1.5"/>
+          <path d="M180,70 Q184,66 188,70" fill="none" stroke="#7a5030" stroke-width="1.5"/>
+          <!-- open mouth -->
+          <ellipse cx="177" cy="92" rx="5" ry="4" fill="#c07840" opacity="0.8"/>
+          <!-- sweat drop -->
+          <ellipse cx="193" cy="70" rx="3" ry="5" fill="#a0d0ff" opacity="0.6"><animate attributeName="cy" values="70;78;70" dur="1.5s" repeatCount="indefinite"/></ellipse>
+          <!-- arms up in alarm -->
+          <path d="M146,120 Q122,106 106,94" stroke="url(#sk4)" stroke-width="12" stroke-linecap="round" fill="none"/>
+          <path d="M208,120 Q232,106 248,94" stroke="url(#sk4)" stroke-width="12" stroke-linecap="round" fill="none"/>
+          <!-- hands open -->
+          <ellipse cx="103" cy="92" rx="11" ry="8" fill="url(#sk4)"/>
+          <ellipse cx="251" cy="92" rx="11" ry="8" fill="url(#sk4)"/>
+
+          <!-- LAPTOP/SCREEN on desk in front of person -->
+          <rect x="222" y="102" width="120" height="80" rx="6" fill="#18183a" stroke="#5050b0" stroke-width="1.5"/>
+          <rect x="227" y="107" width="110" height="68" rx="4" fill="#1a1a4e"/>
+          <!-- alarming notification on screen -->
+          <rect x="235" y="118" width="94" height="46" rx="6" fill="#ff4444" opacity="0.2"/>
+          <rect x="235" y="118" width="94" height="46" rx="6" fill="none" stroke="#ff6666" stroke-width="1.5"/>
+          <text x="282" y="135" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#ff9999" font-weight="800">⚠ ROLE AT RISK</text>
+          <text x="282" y="147" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#ccaaff">AI can now perform</text>
+          <text x="282" y="157" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#ccaaff">82% of this role</text>
+          <!-- screen glow -->
+          <rect x="227" y="107" width="110" height="68" rx="4" fill="#ff4444" opacity="0.04"><animate attributeName="opacity" values="0.04;0.1;0.04" dur="2s" repeatCount="indefinite"/></rect>
+          <!-- laptop stand -->
+          <rect x="275" y="182" width="6" height="10" rx="2" fill="#4040a0"/>
+          <rect x="262" y="190" width="32" height="4" rx="2" fill="#4040a0"/>
+
+          <!-- SECOND PERSON in background — standing, looking over at first person sympathetically -->
+          <rect x="360" y="135" width="14" height="38" rx="5" fill="#6868a0" opacity="0.7"/>
+          <rect x="378" y="135" width="14" height="38" rx="5" fill="#6868a0" opacity="0.7"/>
+          <rect x="352" y="100" width="48" height="42" rx="9" fill="#7878b8" opacity="0.7"/>
+          <rect x="370" y="96" width="12" height="12" rx="5" fill="url(#sk5)" opacity="0.85"/>
+          <ellipse cx="376" cy="84" rx="18" ry="19" fill="url(#sk5)" opacity="0.85"/>
+          <ellipse cx="376" cy="68" rx="18" ry="9" fill="#2a1808" opacity="0.7"/>
+          <rect x="358" y="68" width="36" height="10" rx="4" fill="#2a1808" opacity="0.7"/>
+          <ellipse cx="370" cy="84" rx="3" ry="3.5" fill="white" opacity="0.8"/>
+          <ellipse cx="382" cy="84" rx="3" ry="3.5" fill="white" opacity="0.8"/>
+          <circle cx="370.5" cy="85" r="2" fill="#1a1a1a" opacity="0.8"/>
+          <circle cx="382.5" cy="85" r="2" fill="#1a1a1a" opacity="0.8"/>
+          <!-- comforting hand gesture -->
+          <path d="M352,118 Q340,126 332,136" stroke="url(#sk5)" stroke-width="9" stroke-linecap="round" fill="none" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="fb-body">
+        <div class="card-tag">Deep Dive</div>
+        <h3>White-Collar Reckoning: The Professions AI Is Disrupting Fastest in 2026</h3>
+        <p>Law, finance, and accounting were supposed to be safe. New data suggests the disruption is arriving faster than anyone predicted — and employers are already restructuring.</p>
+        <div class="card-meta" style="margin-top:12px;">By Dr. Priya Mehta, Senior Editor · Feb 23, 2026 · 12 min read</div>
+      </div>
+    </div>
+    <div class="list-panel">
+      <!-- List 1: Doctor with AI tool -->
+      <div class="l-art">
+        <div class="la-img">
+          <svg viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg">
+            <rect width="76" height="76" fill="#fce8f3"/>
+            <!-- doctor figure -->
+            <rect x="28" y="48" width="10" height="22" rx="4" fill="#1a4a8a" opacity="0.8"/>
+            <rect x="38" y="48" width="10" height="22" rx="4" fill="#1a4a8a" opacity="0.8"/>
+            <rect x="22" y="28" width="32" height="24" rx="7" fill="#e8e8ff" opacity="0.9"/>
+            <!-- stethoscope -->
+            <path d="M26,36 Q20,44 24,52" fill="none" stroke="#2d2dff" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="24" cy="53" r="3" fill="#2d2dff" opacity="0.7"/>
+            <!-- neck/head -->
+            <rect x="32" y="24" width="12" height="10" rx="4" fill="#f5c8a0"/>
+            <ellipse cx="38" cy="16" rx="14" ry="15" fill="#f5c8a0"/>
+            <ellipse cx="38" cy="4" rx="14" ry="8" fill="#1a0808" opacity="0.8"/>
+            <!-- tablet in hand with AI glow -->
+            <rect x="46" y="32" width="20" height="26" rx="3" fill="#1a1a3a"/>
+            <rect x="48" y="34" width="16" height="20" rx="2" fill="#2d2dff" opacity="0.4"/>
+            <rect x="48" y="34" width="16" height="20" rx="2" fill="#4444ff" opacity="0.08"><animate attributeName="opacity" values="0.05;0.18;0.05" dur="2s" repeatCount="indefinite"/></rect>
+            <text x="56" y="46" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="6" fill="white" font-weight="700">AI</text>
+          </svg>
+        </div>
+        <div><div class="la-tag">Healthcare</div><h4>How AI Diagnostic Tools Are Changing What Doctors Actually Do</h4><div class="card-meta">Feb 22, 2026 · 9 min</div></div>
+      </div>
+      <!-- List 2: Designer at desk, digital canvas -->
+      <div class="l-art">
+        <div class="la-img">
+          <svg viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg">
+            <rect width="76" height="76" fill="#fff8ec"/>
+            <!-- desk -->
+            <rect x="8" y="54" width="60" height="6" rx="2" fill="#e8c890" opacity="0.7"/>
+            <!-- laptop on desk -->
+            <rect x="20" y="36" width="36" height="24" rx="3" fill="#2a2a5a"/>
+            <rect x="22" y="38" width="32" height="18" rx="2" fill="#f5a623" opacity="0.35"/>
+            <rect x="22" y="38" width="32" height="18" rx="2" fill="#f5a623" opacity="0.08"><animate attributeName="opacity" values="0.05;0.15;0.05" dur="2.5s" repeatCount="indefinite"/></rect>
+            <!-- stylus/pen in hand -->
+            <line x1="52" y1="44" x2="60" y2="36" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- person seated -->
+            <rect x="28" y="54" width="20" height="10" rx="4" fill="#5050a0" opacity="0.7"/>
+            <!-- head -->
+            <ellipse cx="38" cy="28" rx="12" ry="13" fill="#e8b888"/>
+            <ellipse cx="38" cy="16" rx="12" ry="7" fill="#2a1808"/>
+            <!-- eyes looking at screen -->
+            <circle cx="34" cy="28" r="2.5" fill="#1a1a1a"/>
+            <circle cx="42" cy="28" r="2.5" fill="#1a1a1a"/>
+            <!-- worried brow -->
+            <path d="M32,23 Q34,21 36,23" fill="none" stroke="#7a5030" stroke-width="1"/>
+            <path d="M40,23 Q42,21 44,23" fill="none" stroke="#7a5030" stroke-width="1"/>
+            <!-- AI ghost image overlapping screen -->
+            <rect x="22" y="38" width="14" height="18" rx="2" fill="white" opacity="0.1"/>
+            <text x="29" y="50" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="6" fill="white" opacity="0.7">AI</text>
+          </svg>
+        </div>
+        <div><div class="la-tag" style="color:#b06a00">Creative</div><h4>Designers vs. Diffusion Models: Survival Strategies That Work</h4><div class="card-meta">Feb 21, 2026 · 6 min</div></div>
+      </div>
+      <!-- List 3: Team of people in meeting, relaxed -->
+      <div class="l-art">
+        <div class="la-img">
+          <svg viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg">
+            <rect width="76" height="76" fill="#eeeeff"/>
+            <!-- table -->
+            <rect x="10" y="46" width="56" height="6" rx="3" fill="#a0a0d0" opacity="0.6"/>
+            <!-- 3 people around table -->
+            <!-- left person -->
+            <rect x="8" y="46" width="10" height="22" rx="4" fill="#6868a8" opacity="0.7"/>
+            <ellipse cx="13" cy="36" rx="10" ry="11" fill="#f5c8a0"/>
+            <ellipse cx="13" cy="26" rx="10" ry="6" fill="#1a0808" opacity="0.8"/>
+            <circle cx="10" cy="37" r="2" fill="#1a1a1a"/>
+            <circle cx="16" cy="37" r="2" fill="#1a1a1a"/>
+            <path d="M9,43 Q13,46 17,43" fill="none" stroke="#a07040" stroke-width="1"/>
+            <!-- middle person (slightly taller, standing) -->
+            <ellipse cx="38" cy="28" rx="11" ry="12" fill="#e8b888"/>
+            <ellipse cx="38" cy="18" rx="11" ry="6" fill="#2a1808" opacity="0.9"/>
+            <circle cx="35" cy="28" r="2" fill="#1a1a1a"/>
+            <circle cx="41" cy="28" r="2" fill="#1a1a1a"/>
+            <path d="M34,35 Q38,38 42,35" fill="none" stroke="#a07040" stroke-width="1.1"/>
+            <rect x="28" y="38" width="20" height="26" rx="7" fill="#2d2dff" opacity="0.8"/>
+            <!-- clock/calendar on wall -->
+            <circle cx="62" cy="20" r="10" fill="white" stroke="#c0c0ee" stroke-width="1.5"/>
+            <line x1="62" y1="20" x2="62" y2="13" stroke="#2d2dff" stroke-width="1.5"/>
+            <line x1="62" y1="20" x2="67" y2="23" stroke="#f5a623" stroke-width="1.5"/>
+            <text x="62" y="34" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="6" fill="#6060a0">4-DAY</text>
+            <!-- right person -->
+            <rect x="58" y="46" width="10" height="22" rx="4" fill="#8080c0" opacity="0.7"/>
+            <ellipse cx="63" cy="36" rx="10" ry="11" fill="#f8d0a8"/>
+            <ellipse cx="63" cy="26" rx="10" ry="6" fill="#2a1808" opacity="0.8"/>
+            <circle cx="60" cy="37" r="2" fill="#1a1a1a"/>
+            <circle cx="66" cy="37" r="2" fill="#1a1a1a"/>
+            <path d="M59,43 Q63,46 67,43" fill="none" stroke="#a07040" stroke-width="1"/>
+          </svg>
+        </div>
+        <div><div class="la-tag">Future of Work</div><h4>The 4-Day Work Week Meets AI: Early Results From 200 Companies</h4><div class="card-meta">Feb 20, 2026 · 7 min</div></div>
+      </div>
+      <!-- List 4: Person at whiteboard, reskilling -->
+      <div class="l-art">
+        <div class="la-img">
+          <svg viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg">
+            <rect width="76" height="76" fill="#edfaf3"/>
+            <!-- whiteboard -->
+            <rect x="4" y="8" width="50" height="36" rx="4" fill="white" stroke="#80c8a0" stroke-width="1.5"/>
+            <!-- writing on board -->
+            <text x="29" y="22" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#2d2dff" font-weight="700">AI SKILLS</text>
+            <rect x="8" y="26" width="38" height="3" rx="1.5" fill="#a0d8b8"/>
+            <rect x="8" y="32" width="28" height="3" rx="1.5" fill="#a0d8b8"/>
+            <rect x="8" y="38" width="34" height="3" rx="1.5" fill="#f5a623" opacity="0.6"/>
+            <!-- person standing at board -->
+            <rect x="44" y="46" width="10" height="24" rx="4" fill="#1a7a4a" opacity="0.8"/>
+            <rect x="56" y="48" width="10" height="22" rx="4" fill="#1a7a4a" opacity="0.8"/>
+            <rect x="40" y="28" width="28" height="24" rx="7" fill="#2d8a5a" opacity="0.85"/>
+            <!-- arm writing on board -->
+            <path d="M40,36 Q26,36 20,40" stroke="#f5c8a0" stroke-width="8" stroke-linecap="round" fill="none"/>
+            <ellipse cx="16" cy="42" rx="7" ry="5" fill="#f5c8a0"/>
+            <!-- marker -->
+            <rect x="10" y="40" width="12" height="4" rx="2" fill="#2d2dff" opacity="0.8"/>
+            <!-- neck/head -->
+            <rect x="50" y="24" width="10" height="8" rx="4" fill="#f5c8a0"/>
+            <ellipse cx="55" cy="17" rx="11" ry="12" fill="#f5c8a0"/>
+            <ellipse cx="55" cy="7" rx="11" ry="6" fill="#1a0808" opacity="0.9"/>
+            <circle cx="52" cy="17" r="2" fill="#1a1a1a"/>
+            <circle cx="58" cy="17" r="2" fill="#1a1a1a"/>
+            <path d="M51,23 Q55,26 59,23" fill="none" stroke="#a07040" stroke-width="1.1"/>
+          </svg>
+        </div>
+        <div><div class="la-tag">Reskilling</div><h4>Why Most Corporate AI Training Programmes Are Failing Workers</h4><div class="card-meta">Feb 19, 2026 · 8 min</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANALYSIS GRID -->
+  <div class="section-header"><h2>Analysis &amp; Opinion</h2><a href="#" class="see-all">See all →</a></div>
+  <div class="article-grid">
+    <!-- Global: diverse group of workers from different countries -->
+    <div class="a-card">
+      <div class="ac-img">
+        <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ag1bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f3e8fd"/><stop offset="100%" stop-color="#e8d4f8"/></linearGradient></defs>
+          <rect width="320" height="160" fill="url(#ag1bg)"/>
+          <line x1="0" y1="144" x2="320" y2="144" stroke="#d0b0f0" stroke-width="1"/>
+          <!-- 4 diverse worker silhouettes with flag hints -->
+          <!-- Person 1 (leftmost, raised hand) -->
+          <rect x="22" y="98" width="12" height="44" rx="5" fill="#6868a8" opacity="0.75"/>
+          <rect x="36" y="102" width="12" height="40" rx="5" fill="#6868a8" opacity="0.75"/>
+          <rect x="18" y="68" width="36" height="38" rx="8" fill="#9090c8" opacity="0.8"/>
+          <rect x="30" y="64" width="12" height="10" rx="4" fill="#f5c8a0"/>
+          <ellipse cx="36" cy="54" rx="16" ry="18" fill="#f5c8a0"/>
+          <ellipse cx="36" cy="39" rx="16" ry="8" fill="#2a1808" opacity="0.9"/>
+          <!-- raised arm -->
+          <path d="M18,82 Q4,66 2,50" stroke="#f5c8a0" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <!-- flag: UK colours hint -->
+          <rect x="-2" y="42" width="18" height="12" rx="2" fill="#2d2dff" opacity="0.7"/>
+          <line x1="-2" y1="42" x2="16" y2="54" stroke="white" stroke-width="1.5" opacity="0.7"/>
+          <line x1="16" y1="42" x2="-2" y2="54" stroke="white" stroke-width="1.5" opacity="0.7"/>
+
+          <!-- Person 2 -->
+          <rect x="96" y="102" width="12" height="44" rx="5" fill="#2d2dff" opacity="0.8"/>
+          <rect x="110" y="102" width="12" height="44" rx="5" fill="#2d2dff" opacity="0.8"/>
+          <rect x="90" y="70" width="38" height="40" rx="8" fill="#3a3acc" opacity="0.85"/>
+          <rect x="103" y="66" width="12" height="10" rx="4" fill="#e8b888"/>
+          <ellipse cx="109" cy="56" rx="16" ry="17" fill="#e8b888"/>
+          <ellipse cx="109" cy="42" rx="16" ry="8" fill="#1a0808" opacity="0.85"/>
+          <circle cx="105" cy="56" r="2.5" fill="#1a1a1a"/>
+          <circle cx="113" cy="56" r="2.5" fill="#1a1a1a"/>
+          <path d="M104,64 Q109,68 114,64" fill="none" stroke="#a07040" stroke-width="1.2"/>
+
+          <!-- Person 3 (middle, star) -->
+          <rect x="178" y="94" width="14" height="52" rx="6" fill="#f5a623" opacity="0.8"/>
+          <rect x="194" y="94" width="14" height="52" rx="6" fill="#f5a623" opacity="0.8"/>
+          <rect x="170" y="60" width="44" height="42" rx="9" fill="#f5a623" opacity="0.85"/>
+          <rect x="184" y="56" width="14" height="12" rx="5" fill="#f5c8a0"/>
+          <ellipse cx="191" cy="44" rx="18" ry="20" fill="#f5c8a0"/>
+          <ellipse cx="191" cy="27" rx="18" ry="9" fill="#1a0808" opacity="0.85"/>
+          <!-- star badge -->
+          <circle cx="214" cy="70" r="10" fill="white" opacity="0.9"/>
+          <text x="214" y="74" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#f5a623">★</text>
+          <circle cx="105" cy="56" r="2.5" fill="#1a1a1a"/>
+          <path d="M184,52 Q191,56 198,52" fill="none" stroke="#a07040" stroke-width="1.3"/>
+          <!-- arms raised -->
+          <path d="M170,78 Q154,62 144,48" stroke="#f5c8a0" stroke-width="11" stroke-linecap="round" fill="none"/>
+          <path d="M214,78 Q230,62 240,48" stroke="#f5c8a0" stroke-width="11" stroke-linecap="round" fill="none"/>
+
+          <!-- Person 4 -->
+          <rect x="270" y="102" width="12" height="44" rx="5" fill="#8888c0" opacity="0.75"/>
+          <rect x="284" y="102" width="12" height="44" rx="5" fill="#8888c0" opacity="0.75"/>
+          <rect x="264" y="70" width="38" height="40" rx="8" fill="#9090b8" opacity="0.8"/>
+          <rect x="277" y="66" width="12" height="10" rx="4" fill="#f8d0b0"/>
+          <ellipse cx="283" cy="56" rx="15" ry="16" fill="#f8d0b0"/>
+          <ellipse cx="283" cy="43" rx="15" ry="8" fill="#1a0808" opacity="0.8"/>
+          <circle cx="279" cy="56" r="2.5" fill="#1a1a1a"/>
+          <circle cx="287" cy="56" r="2.5" fill="#1a1a1a"/>
+          <path d="M278,64 Q283,68 288,64" fill="none" stroke="#a07040" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <div class="ac-body">
+        <div class="card-tag">Global</div>
+        <h3>Which Countries Are Best Preparing Their Workers for the AI Transition?</h3>
+        <p>Singapore and Denmark top rankings. Here's what they're actually doing differently.</p>
+        <div class="card-meta">Feb 23, 2026 · 9 min read</div>
+      </div>
+    </div>
+    <!-- Opinion: angry worker at desk -->
+    <div class="a-card">
+      <div class="ac-img">
+        <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ag2bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#fde8e8"/><stop offset="100%" stop-color="#f8d0d0"/></linearGradient></defs>
+          <rect width="320" height="160" fill="url(#ag2bg)"/>
+          <line x1="0" y1="144" x2="320" y2="144" stroke="#e8b0b0" stroke-width="1"/>
+          <!-- desk -->
+          <rect x="60" y="116" width="200" height="10" rx="3" fill="#d0a0a0" opacity="0.6"/>
+          <!-- laptop on desk with "DON'T WORRY" text -->
+          <rect x="120" y="80" width="80" height="56" rx="5" fill="#1a1a3a"/>
+          <rect x="124" y="84" width="72" height="44" rx="3" fill="#1e1e4a"/>
+          <text x="160" y="100" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#88aaff">ARTICLE SAYS:</text>
+          <text x="160" y="111" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="white" font-weight="700">"Don't worry</text>
+          <text x="160" y="121" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="white" font-weight="700">about AI!"</text>
+          <rect x="154" y="127" width="12" height="4" rx="2" fill="#4040a0"/>
+
+          <!-- person — looking angry at screen, standing/leaning forward -->
+          <rect x="176" y="118" width="14" height="28" rx="5" fill="#3a3a8a" opacity="0.85"/>
+          <rect x="194" y="118" width="14" height="28" rx="5" fill="#3a3a8a" opacity="0.85"/>
+          <rect x="168" y="78" width="48" height="46" rx="9" fill="#9090c8" opacity="0.9"/>
+          <rect x="184" y="74" width="14" height="12" rx="5" fill="#f5c8a0"/>
+          <ellipse cx="191" cy="60" rx="20" ry="22" fill="#f5c8a0"/>
+          <ellipse cx="191" cy="41" rx="20" ry="10" fill="#1a0808" opacity="0.9"/>
+          <!-- angry brows -->
+          <path d="M182,52 Q187,47 192,52" fill="#c87040" stroke="#7a4020" stroke-width="1"/>
+          <path d="M196,52 Q201,47 206,52" fill="#c87040" stroke="#7a4020" stroke-width="1"/>
+          <!-- narrow angry eyes -->
+          <ellipse cx="186" cy="58" rx="5" ry="3" fill="white"/>
+          <ellipse cx="200" cy="58" rx="5" ry="3" fill="white"/>
+          <circle cx="187" cy="58" r="2.5" fill="#1a1a1a"/>
+          <circle cx="201" cy="58" r="2.5" fill="#1a1a1a"/>
+          <!-- frowning mouth -->
+          <path d="M184,72 Q191,68 198,72" fill="none" stroke="#c07040" stroke-width="2"/>
+          <!-- angry steam lines from head -->
+          <path d="M210,44 Q216,36 212,28" fill="none" stroke="#ff8888" stroke-width="2" opacity="0.7"><animate attributeName="d" values="M210,44 Q216,36 212,28;M210,44 Q214,36 218,28;M210,44 Q216,36 212,28" dur="1.2s" repeatCount="indefinite"/></path>
+          <path d="M196,40 Q200,32 196,24" fill="none" stroke="#ff8888" stroke-width="2" opacity="0.6"><animate attributeName="d" values="M196,40 Q200,32 196,24;M196,40 Q192,32 196,24;M196,40 Q200,32 196,24" dur="1.5s" repeatCount="indefinite"/></path>
+          <!-- arms leaning forward on desk -->
+          <path d="M168,96 Q140,108 126,116" stroke="#f5c8a0" stroke-width="11" stroke-linecap="round" fill="none"/>
+          <path d="M216,96 Q234,110 246,116" stroke="#f5c8a0" stroke-width="11" stroke-linecap="round" fill="none"/>
+          <!-- speech bubble -->
+          <rect x="30" y="54" width="102" height="40" rx="9" fill="white" opacity="0.85" stroke="#e8a0a0" stroke-width="1.2"/>
+          <polygon points="104,94 110,106 118,94" fill="white" opacity="0.85"/>
+          <text x="81" y="70" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#c03030" font-weight="700">That's insulting</text>
+          <text x="81" y="82" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#c03030" font-weight="700">&amp; inaccurate!</text>
+        </svg>
+      </div>
+      <div class="ac-body">
+        <div class="card-tag amber">Opinion</div>
+        <h3>Stop Telling Workers Not to Worry About AI — It's Insulting and Inaccurate</h3>
+        <p>A sharp response to the wave of reassuring think-pieces that gloss over real disruption happening now.</p>
+        <div class="card-meta">Feb 22, 2026 · 5 min read</div>
+      </div>
+    </div>
+    <!-- Finance: suited executive at podium / interview -->
+    <div class="a-card">
+      <div class="ac-img">
+        <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ag3bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e8f4fd"/><stop offset="100%" stop-color="#d4e8f8"/></linearGradient></defs>
+          <rect width="320" height="160" fill="url(#ag3bg)"/>
+          <line x1="0" y1="144" x2="320" y2="144" stroke="#a8c8e8" stroke-width="1"/>
+          <!-- podium/desk -->
+          <rect x="118" y="108" width="84" height="36" rx="6" fill="#a0b8d0" opacity="0.7"/>
+          <text x="160" y="130" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#2a5a8a" font-weight="700">GOLDMAN SACHS</text>
+          <!-- executive figure behind podium -->
+          <rect x="140" y="108" width="14" height="36" rx="5" fill="#1a1a4a"/>
+          <rect x="162" y="108" width="14" height="36" rx="5" fill="#1a1a4a"/>
+          <rect x="132" y="62" width="56" height="54" rx="10" fill="#1a1a4a" opacity="0.95"/>
+          <!-- suit lapels -->
+          <path d="M154,62 Q160,76 160,84" fill="none" stroke="#2a2a5a" stroke-width="5" stroke-linecap="round"/>
+          <path d="M166,62 Q160,76 160,84" fill="none" stroke="#2a2a5a" stroke-width="5" stroke-linecap="round"/>
+          <!-- tie -->
+          <rect x="156" y="62" width="8" height="26" rx="2" fill="white" opacity="0.3"/>
+          <rect x="157" y="68" width="6" height="20" rx="2" fill="#f5a623" opacity="0.6"/>
+          <rect x="152" y="54" width="16" height="14" rx="6" fill="#f5c8a0"/>
+          <ellipse cx="160" cy="40" rx="20" ry="22" fill="#f5c8a0"/>
+          <ellipse cx="160" cy="22" rx="20" ry="10" fill="#1a0808" opacity="0.9"/>
+          <!-- microphone at podium -->
+          <rect x="155" y="88" width="8" height="22" rx="3" fill="#8888b0"/>
+          <ellipse cx="159" cy="86" rx="6" ry="8" fill="#6060a0"/>
+          <!-- eyes: looking ahead confidently -->
+          <ellipse cx="153" cy="40" rx="4.5" ry="5" fill="white"/>
+          <ellipse cx="167" cy="40" rx="4.5" ry="5" fill="white"/>
+          <circle cx="154" cy="41" r="3" fill="#1a1a1a"/>
+          <circle cx="168" cy="41" r="3" fill="#1a1a1a"/>
+          <path d="M153,51 Q160,55 167,51" fill="none" stroke="#a07040" stroke-width="1.3"/>
+          <!-- reporters/audience in foreground (small silhouettes) -->
+          <!-- Reporter 1 with notepad -->
+          <ellipse cx="44" cy="114" rx="14" ry="15" fill="#e8b888" opacity="0.7"/>
+          <ellipse cx="44" cy="100" rx="14" ry="8" fill="#1a0808" opacity="0.7"/>
+          <rect x="32" y="126" width="24" height="20" rx="6" fill="#5050a0" opacity="0.7"/>
+          <rect x="54" y="116" width="16" height="22" rx="3" fill="white" opacity="0.8"/>
+          <!-- Reporter 2 with camera -->
+          <ellipse cx="264" cy="114" rx="14" ry="15" fill="#f5c8a0" opacity="0.7"/>
+          <ellipse cx="264" cy="100" rx="14" ry="7" fill="#1a0808" opacity="0.7"/>
+          <rect x="252" y="126" width="24" height="20" rx="6" fill="#7070b0" opacity="0.7"/>
+          <!-- camera -->
+          <rect x="274" y="108" width="22" height="14" rx="4" fill="#2a2a5a" opacity="0.8"/>
+          <circle cx="284" cy="115" r="5" fill="#1a1a1a" opacity="0.6"/>
+          <circle cx="284" cy="115" r="2" fill="#4040a0" opacity="0.8"/>
+          <!-- speech/quote above exec -->
+          <rect x="186" y="24" width="114" height="32" rx="8" fill="white" opacity="0.85" stroke="#a0c0e0" stroke-width="1.2"/>
+          <polygon points="198,56 192,68 204,56" fill="white" opacity="0.85"/>
+          <text x="243" y="37" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#1a4a8a" font-weight="700">"AI has reshaped</text>
+          <text x="243" y="48" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#1a4a8a" font-weight="700">everything we do"</text>
+        </svg>
+      </div>
+      <div class="ac-body">
+        <div class="card-tag">Finance</div>
+        <h3>Inside Goldman Sachs's Internal AI Transition: What Actually Changed</h3>
+        <p>An exclusive look at how one of the world's biggest employers is restructuring roles around AI capabilities.</p>
+        <div class="card-meta">Feb 21, 2026 · 10 min read</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOP -->
+  <div class="shop-section" id="shop">
+    <div class="section-header"><h2>🛒 The Prutendas Guide Shop</h2><a href="#" class="see-all">View all guides →</a></div>
+    <div class="shop-banner">
+      <div><h3>Expert guides for navigating the AI economy</h3><p>Practical, research-backed playbooks to help you adapt and thrive as AI reshapes work.</p></div>
+      <button class="btn-amber">Browse All Guides →</button>
+    </div>
+    <div class="shop-grid">
+      <!-- Shop card 1: person with shield/armour (AI-proof career) -->
+      <div class="s-card">
+        <div class="sc-img">
+          <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="130" fill="#eeeeff"/>
+            <line x1="0" y1="114" x2="200" y2="114" stroke="#c0c0e8" stroke-width="1"/>
+            <!-- Person standing confidently holding a shield -->
+            <rect x="86" y="82" width="12" height="34" rx="5" fill="#2d2dff" opacity="0.85"/>
+            <rect x="102" y="82" width="12" height="34" rx="5" fill="#2d2dff" opacity="0.85"/>
+            <rect x="80" y="48" width="40" height="40" rx="9" fill="#2d2dff" opacity="0.9"/>
+            <rect x="94" y="44" width="12" height="10" rx="4" fill="#f5c8a0"/>
+            <ellipse cx="100" cy="33" rx="16" ry="18" fill="#f5c8a0"/>
+            <ellipse cx="100" cy="18" rx="16" ry="9" fill="#1a0808" opacity="0.9"/>
+            <ellipse cx="94" cy="33" rx="3.5" ry="4" fill="white"/>
+            <ellipse cx="106" cy="33" rx="3.5" ry="4" fill="white"/>
+            <circle cx="95" cy="34" r="2.5" fill="#1a1a1a"/>
+            <circle cx="107" cy="34" r="2.5" fill="#1a1a1a"/>
+            <path d="M93,42 Q100,47 107,42" fill="none" stroke="#a07040" stroke-width="1.3"/>
+            <!-- arms holding shield -->
+            <path d="M80,62 Q62,56 50,52" stroke="#f5c8a0" stroke-width="10" stroke-linecap="round" fill="none"/>
+            <path d="M120,62 Q136,54 148,52" stroke="#f5c8a0" stroke-width="10" stroke-linecap="round" fill="none"/>
+            <!-- shield -->
+            <path d="M44,38 L56,38 Q64,38 64,48 Q64,62 50,70 Q36,62 36,48 Q36,38 44,38Z" fill="#2d2dff" opacity="0.85"/>
+            <path d="M44,40 L56,40 Q62,40 62,48 Q62,60 50,67 Q38,60 38,48 Q38,40 44,40Z" fill="#4444ff" opacity="0.5"/>
+            <text x="50" y="56" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="white" font-weight="800">✓</text>
+            <!-- sparkles around person -->
+            <circle cx="148" cy="48" r="4" fill="#f5a623" opacity="0.7"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.5s" repeatCount="indefinite"/></circle>
+            <circle cx="156" cy="62" r="3" fill="#f5a623" opacity="0.5"><animate attributeName="opacity" values="0.2;0.7;0.2" dur="1.8s" repeatCount="indefinite"/></circle>
+          </svg>
+          <span class="sc-badge bs">BESTSELLER</span>
+        </div>
+        <div class="sc-body">
+          <div class="stars">★★★★★ <span class="star-ct">(214)</span></div>
+          <h4>The AI-Proof Career Playbook</h4>
+          <p>90-page strategic guide with sector-by-sector risk maps and career action plans.</p>
+          <div class="sc-footer"><div class="price">£14.99 <s>£24.99</s></div><button class="btn-buy">Add to Cart</button></div>
+        </div>
+      </div>
+      <!-- Shop card 2: person climbing steps / reskilling -->
+      <div class="s-card">
+        <div class="sc-img">
+          <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="130" fill="#fff8ec"/>
+            <line x1="0" y1="114" x2="200" y2="114" stroke="#e0c890" stroke-width="1"/>
+            <!-- Steps -->
+            <rect x="20" y="96" width="40" height="18" rx="2" fill="#f5a623" opacity="0.3"/>
+            <rect x="60" y="78" width="40" height="36" rx="2" fill="#f5a623" opacity="0.4"/>
+            <rect x="100" y="60" width="40" height="54" rx="2" fill="#f5a623" opacity="0.5"/>
+            <rect x="140" y="42" width="40" height="72" rx="2" fill="#f5a623" opacity="0.65"/>
+            <!-- step labels -->
+            <text x="40" y="109" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#b06a00">Day 1</text>
+            <text x="80" y="109" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#b06a00">Week 1</text>
+            <text x="120" y="109" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#b06a00">Week 2</text>
+            <text x="160" y="109" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#b06a00">Day 30</text>
+            <!-- person running up steps -->
+            <rect x="148" y="68" width="10" height="28" rx="4" fill="#2d2dff" opacity="0.85"/>
+            <rect x="160" y="72" width="10" height="22" rx="4" fill="#2d2dff" opacity="0.85">
+              <animateTransform attributeName="transform" type="translate" values="0,0;0,-2;0,0" dur="0.6s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="148" y="48" width="24" height="28" rx="7" fill="#2d2dff" opacity="0.9"/>
+            <rect x="154" y="44" width="10" height="8" rx="4" fill="#f5c8a0"/>
+            <ellipse cx="159" cy="36" rx="13" ry="14" fill="#f5c8a0"/>
+            <ellipse cx="159" cy="24" rx="13" ry="7" fill="#1a0808" opacity="0.9"/>
+            <!-- running arms -->
+            <path d="M148,60 Q136,52 128,48" stroke="#f5c8a0" stroke-width="9" stroke-linecap="round" fill="none">
+              <animateTransform attributeName="transform" type="rotate" values="0 148 60;8 148 60;0 148 60;-8 148 60;0 148 60" dur="0.6s" repeatCount="indefinite"/>
+            </path>
+            <path d="M172,60 Q182,50 188,44" stroke="#f5c8a0" stroke-width="9" stroke-linecap="round" fill="none">
+              <animateTransform attributeName="transform" type="rotate" values="0 172 60;-8 172 60;0 172 60;8 172 60;0 172 60" dur="0.6s" repeatCount="indefinite"/>
+            </path>
+            <!-- eyes determined -->
+            <ellipse cx="155" cy="35" rx="3" ry="3.5" fill="white"/>
+            <ellipse cx="163" cy="35" rx="3" ry="3.5" fill="white"/>
+            <circle cx="156" cy="36" r="2" fill="#1a1a1a"/>
+            <circle cx="164" cy="36" r="2" fill="#1a1a1a"/>
+          </svg>
+          <span class="sc-badge">NEW</span>
+        </div>
+        <div class="sc-body">
+          <div class="stars">★★★★☆ <span class="star-ct">(87)</span></div>
+          <h4>Reskilling Fast: A 30-Day Action Plan</h4>
+          <p>Build AI-adjacent skills in one month, even while working full time.</p>
+          <div class="sc-footer"><div class="price">£9.99</div><button class="btn-buy">Add to Cart</button></div>
+        </div>
+      </div>
+      <!-- Shop card 3: person in negotiation handshake -->
+      <div class="s-card">
+        <div class="sc-img">
+          <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="130" fill="#edfaf3"/>
+            <line x1="0" y1="114" x2="200" y2="114" stroke="#90d8a8" stroke-width="1"/>
+            <!-- Two people shaking hands across a table -->
+            <!-- table -->
+            <rect x="60" y="82" width="80" height="10" rx="3" fill="#90c8a8" opacity="0.6"/>
+            <!-- Person 1 (left) -->
+            <rect x="20" y="82" width="12" height="34" rx="5" fill="#3a3a8a" opacity="0.8"/>
+            <rect x="36" y="84" width="12" height="32" rx="5" fill="#3a3a8a" opacity="0.8"/>
+            <rect x="14" y="50" width="40" height="38" rx="8" fill="#2d2dff" opacity="0.85"/>
+            <rect x="28" y="46" width="12" height="10" rx="5" fill="#f5c8a0"/>
+            <ellipse cx="34" cy="35" rx="15" ry="17" fill="#f5c8a0"/>
+            <ellipse cx="34" cy="21" rx="15" ry="8" fill="#1a0808" opacity="0.9"/>
+            <path d="M30,43 Q34,47 38,43" fill="none" stroke="#a07040" stroke-width="1.2"/>
+            <!-- arm extending for handshake -->
+            <path d="M54,68 Q74,78 90,82" stroke="#f5c8a0" stroke-width="10" stroke-linecap="round" fill="none"/>
+            <!-- Person 2 (right) -->
+            <rect x="152" y="82" width="12" height="34" rx="5" fill="#6868a0" opacity="0.8"/>
+            <rect x="166" y="84" width="12" height="32" rx="5" fill="#6868a0" opacity="0.8"/>
+            <rect x="144" y="50" width="40" height="38" rx="8" fill="#8080c0" opacity="0.85"/>
+            <rect x="158" y="46" width="12" height="10" rx="5" fill="#e8b888"/>
+            <ellipse cx="164" cy="35" rx="15" ry="17" fill="#e8b888"/>
+            <ellipse cx="164" cy="21" rx="15" ry="8" fill="#1a0808" opacity="0.9"/>
+            <path d="M160,43 Q164,47 168,43" fill="none" stroke="#a07040" stroke-width="1.2"/>
+            <!-- arm extending for handshake -->
+            <path d="M144,68 Q124,78 110,82" stroke="#e8b888" stroke-width="10" stroke-linecap="round" fill="none"/>
+            <!-- Clasped hands in centre -->
+            <ellipse cx="100" cy="82" rx="16" ry="9" fill="#d0a878" opacity="0.9"/>
+            <!-- +£ badge -->
+            <circle cx="100" cy="56" r="14" fill="#f5a623" opacity="0.9"><animate attributeName="r" values="14;16;14" dur="2s" repeatCount="indefinite"/></circle>
+            <text x="100" y="61" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="white" font-weight="800">+£</text>
+          </svg>
+          <span class="sc-badge">POPULAR</span>
+        </div>
+        <div class="sc-body">
+          <div class="stars">★★★★★ <span class="star-ct">(142)</span></div>
+          <h4>Negotiating in the AI Era: Salary &amp; Role Guide</h4>
+          <p>Scripts and templates to negotiate a higher salary using AI disruption to your advantage.</p>
+          <div class="sc-footer"><div class="price">£11.99</div><button class="btn-buy">Add to Cart</button></div>
+        </div>
+      </div>
+      <!-- Shop card 4: freelancer at laptop, coffee shop vibe -->
+      <div class="s-card">
+        <div class="sc-img">
+          <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="130" fill="#fde8f3"/>
+            <line x1="0" y1="114" x2="200" y2="114" stroke="#e0a8c8" stroke-width="1"/>
+            <!-- table -->
+            <rect x="40" y="88" width="120" height="8" rx="3" fill="#d0a0c0" opacity="0.6"/>
+            <!-- laptop -->
+            <rect x="66" y="58" width="70" height="46" rx="4" fill="#2a2a5a"/>
+            <rect x="70" y="62" width="62" height="38" rx="3" fill="#1a1a4a"/>
+            <!-- screen content: freelance work -->
+            <rect x="74" y="66" width="54" height="6" rx="2" fill="#f5a623" opacity="0.5"/>
+            <rect x="74" y="76" width="42" height="4" rx="2" fill="#6060ff" opacity="0.4"/>
+            <rect x="74" y="84" width="50" height="4" rx="2" fill="#6060ff" opacity="0.3"/>
+            <rect x="74" y="92" width="36" height="4" rx="2" fill="#f5a623" opacity="0.4"/>
+            <!-- person -->
+            <rect x="86" y="88" width="12" height="28" rx="5" fill="#c060a0" opacity="0.8"/>
+            <rect x="102" y="88" width="12" height="28" rx="5" fill="#c060a0" opacity="0.8"/>
+            <rect x="78" y="52" width="44" height="42" rx="9" fill="#c060a0" opacity="0.85"/>
+            <rect x="92" y="48" width="14" height="10" rx="5" fill="#f5c8a0"/>
+            <ellipse cx="99" cy="36" rx="18" ry="20" fill="#f5c8a0"/>
+            <!-- longer hair -->
+            <ellipse cx="99" cy="18" rx="18" ry="10" fill="#1a0808" opacity="0.9"/>
+            <rect x="81" y="18" width="36" height="16" rx="4" fill="#1a0808" opacity="0.9"/>
+            <path d="M81,18 Q70,34 74,52" fill="none" stroke="#1a0808" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
+            <path d="M117,18 Q128,34 124,52" fill="none" stroke="#1a0808" stroke-width="6" stroke-linecap="round" opacity="0.9"/>
+            <!-- focused expression -->
+            <ellipse cx="93" cy="36" rx="3.5" ry="4" fill="white"/>
+            <ellipse cx="105" cy="36" rx="3.5" ry="4" fill="white"/>
+            <circle cx="94" cy="37" r="2.5" fill="#1a1a1a"/>
+            <circle cx="106" cy="37" r="2.5" fill="#1a1a1a"/>
+            <path d="M92,46 Q99,50 106,46" fill="none" stroke="#a07040" stroke-width="1.2"/>
+            <!-- arms to keyboard -->
+            <path d="M78,68 Q60,78 52,86" stroke="#f5c8a0" stroke-width="9" stroke-linecap="round" fill="none"/>
+            <path d="M122,68 Q140,78 148,86" stroke="#f5c8a0" stroke-width="9" stroke-linecap="round" fill="none"/>
+            <!-- coffee cup -->
+            <rect x="146" y="76" width="16" height="18" rx="4" fill="#f5a623" opacity="0.8"/>
+            <path d="M162,80 Q168,80 168,84 Q168,88 162,88" fill="none" stroke="#f5a623" stroke-width="2"/>
+            <!-- earnings badge floating -->
+            <rect x="140" y="40" width="48" height="22" rx="8" fill="white" opacity="0.9" stroke="#e080c0" stroke-width="1.2"/>
+            <text x="164" y="49" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#c060a0" font-weight="700">£1,800/mo</text>
+            <text x="164" y="57" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="6" fill="#8040a0">while studying!</text>
+          </svg>
+        </div>
+        <div class="sc-body">
+          <div class="stars">★★★★☆ <span class="star-ct">(56)</span></div>
+          <h4>The Freelancer's AI Toolkit 2026</h4>
+          <p>How independent workers can leverage AI to double output and charge premium rates.</p>
+          <div class="sc-footer"><div class="price">£12.99</div><button class="btn-buy">Add to Cart</button></div>
+        </div>
+      </div>
+      <!-- Shop card 5: manager addressing team -->
+      <div class="s-card">
+        <div class="sc-img">
+          <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="130" fill="#f3e8fd"/>
+            <line x1="0" y1="114" x2="200" y2="114" stroke="#c8a0f0" stroke-width="1"/>
+            <!-- Manager at front, team seated -->
+            <!-- table row for seated people -->
+            <rect x="40" y="80" width="130" height="8" rx="3" fill="#b890e0" opacity="0.4"/>
+            <!-- 3 seated team members (small heads) -->
+            <ellipse cx="66" cy="68" rx="11" ry="12" fill="#f5c8a0" opacity="0.8"/>
+            <ellipse cx="66" cy="56" rx="11" ry="6" fill="#1a0808" opacity="0.7"/>
+            <circle cx="63" cy="68" r="2" fill="#1a1a1a" opacity="0.7"/>
+            <circle cx="69" cy="68" r="2" fill="#1a1a1a" opacity="0.7"/>
+            <rect x="56" y="78" width="20" height="22" rx="5" fill="#7070b0" opacity="0.7"/>
+
+            <ellipse cx="100" cy="64" rx="11" ry="12" fill="#e8b888" opacity="0.8"/>
+            <ellipse cx="100" cy="53" rx="11" ry="6" fill="#2a1808" opacity="0.7"/>
+            <circle cx="97" cy="64" r="2" fill="#1a1a1a" opacity="0.7"/>
+            <circle cx="103" cy="64" r="2" fill="#1a1a1a" opacity="0.7"/>
+            <path d="M96,72 Q100,75 104,72" fill="none" stroke="#a07040" stroke-width="1"/>
+            <rect x="90" y="74" width="20" height="24" rx="5" fill="#9090c0" opacity="0.7"/>
+
+            <ellipse cx="134" cy="68" rx="11" ry="12" fill="#f8d0a8" opacity="0.8"/>
+            <ellipse cx="134" cy="56" rx="11" ry="6" fill="#1a0808" opacity="0.7"/>
+            <circle cx="131" cy="68" r="2" fill="#1a1a1a" opacity="0.7"/>
+            <circle cx="137" cy="68" r="2" fill="#1a1a1a" opacity="0.7"/>
+            <rect x="124" y="78" width="20" height="22" rx="5" fill="#7070b0" opacity="0.7"/>
+
+            <!-- Manager standing (larger, prominent) -->
+            <rect x="158" y="82" width="12" height="34" rx="5" fill="#1a1a5a"/>
+            <rect x="172" y="84" width="12" height="32" rx="5" fill="#1a1a5a"/>
+            <rect x="150" y="44" width="44" height="46" rx="9" fill="#1a1a5a" opacity="0.95"/>
+            <!-- suit -->
+            <path d="M170,44 Q175,56 175,64" fill="none" stroke="#2a2a6a" stroke-width="5" stroke-linecap="round"/>
+            <path d="M180,44 Q175,56 175,64" fill="none" stroke="#2a2a6a" stroke-width="5" stroke-linecap="round"/>
+            <rect x="171" y="44" width="8" height="20" rx="2" fill="white" opacity="0.2"/>
+            <rect x="172" y="50" width="6" height="15" rx="2" fill="#f5a623" opacity="0.5"/>
+            <rect x="167" y="40" width="14" height="10" rx="5" fill="#f5c8a0"/>
+            <ellipse cx="174" cy="28" rx="17" ry="19" fill="#f5c8a0"/>
+            <ellipse cx="174" cy="12" rx="17" ry="9" fill="#1a0808" opacity="0.9"/>
+            <!-- confident expression -->
+            <ellipse cx="168" cy="28" rx="4" ry="4.5" fill="white"/>
+            <ellipse cx="180" cy="28" rx="4" ry="4.5" fill="white"/>
+            <circle cx="169" cy="29" r="2.8" fill="#1a1a1a"/>
+            <circle cx="181" cy="29" r="2.8" fill="#1a1a1a"/>
+            <path d="M167,37 Q174,42 181,37" fill="none" stroke="#a07040" stroke-width="1.4"/>
+            <!-- pointing/presenting arm -->
+            <path d="M150,62 Q130,60 116,58" stroke="#f5c8a0" stroke-width="10" stroke-linecap="round" fill="none"/>
+            <!-- speech bubble -->
+            <rect x="16" y="18" width="106" height="28" rx="8" fill="white" opacity="0.85" stroke="#c0a0e8" stroke-width="1.2"/>
+            <polygon points="60,46 64,56 68,46" fill="white" opacity="0.85"/>
+            <text x="69" y="29" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#6030a0" font-weight="700">Here's how we're</text>
+            <text x="69" y="39" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#6030a0" font-weight="700">navigating AI together</text>
+          </svg>
+        </div>
+        <div class="sc-body">
+          <div class="stars">★★★★★ <span class="star-ct">(98)</span></div>
+          <h4>For Managers: Leading Teams Through AI Transition</h4>
+          <p>How to communicate change, maintain morale, and retain talent during AI transformation.</p>
+          <div class="sc-footer"><div class="price">£16.99 <s>£22.99</s></div><button class="btn-buy">Add to Cart</button></div>
+        </div>
+      </div>
+      <!-- Shop card 6: group of 5 people (bundle) -->
+      <div class="s-card">
+        <div class="sc-img">
+          <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="130" fill="#fef4e8"/>
+            <line x1="0" y1="114" x2="200" y2="114" stroke="#e8c890" stroke-width="1"/>
+            <!-- 5 people standing together, celebrating -->
+            <!-- Person 1 -->
+            <rect x="8" y="76" width="10" height="40" rx="4" fill="#6868a8" opacity="0.75"/>
+            <rect x="20" y="80" width="10" height="36" rx="4" fill="#6868a8" opacity="0.75"/>
+            <rect x="4" y="48" width="30" height="32" rx="7" fill="#9090c8" opacity="0.8"/>
+            <ellipse cx="19" cy="38" rx="13" ry="14" fill="#f5c8a0"/>
+            <ellipse cx="19" cy="26" rx="13" ry="7" fill="#2a1808" opacity="0.85"/>
+            <path d="M4,62 Q-4,50 -6,40" stroke="#f5c8a0" stroke-width="9" stroke-linecap="round" fill="none"/>
+            <circle cx="14" cy="38" r="2" fill="#1a1a1a"/>
+            <circle cx="22" cy="38" r="2" fill="#1a1a1a"/>
+            <path d="M14,46 Q19,50 24,46" fill="none" stroke="#a07040" stroke-width="1.1"/>
+            <!-- Person 2 -->
+            <rect x="42" y="72" width="11" height="44" rx="4" fill="#2d2dff" opacity="0.85"/>
+            <rect x="55" y="74" width="11" height="42" rx="4" fill="#2d2dff" opacity="0.85"/>
+            <rect x="38" y="42" width="32" height="36" rx="8" fill="#2d2dff" opacity="0.9"/>
+            <ellipse cx="54" cy="31" rx="14" ry="16" fill="#e8b888"/>
+            <ellipse cx="54" cy="18" rx="14" ry="7" fill="#1a0808" opacity="0.9"/>
+            <path d="M38,56 Q26,46 20,36" stroke="#e8b888" stroke-width="10" stroke-linecap="round" fill="none"/>
+            <circle cx="50" cy="31" r="2.5" fill="#1a1a1a"/>
+            <circle cx="58" cy="31" r="2.5" fill="#1a1a1a"/>
+            <path d="M49,40 Q54,44 59,40" fill="none" stroke="#a07040" stroke-width="1.2"/>
+            <!-- Person 3 (centre, tallest) -->
+            <rect x="88" y="68" width="12" height="48" rx="5" fill="#f5a623" opacity="0.85"/>
+            <rect x="102" y="70" width="12" height="46" rx="5" fill="#f5a623" opacity="0.85"/>
+            <rect x="82" y="36" width="40" height="40" rx="9" fill="#f5a623" opacity="0.9"/>
+            <ellipse cx="102" cy="24" rx="16" ry="18" fill="#f5c8a0"/>
+            <ellipse cx="102" cy="9" rx="16" ry="8" fill="#1a0808" opacity="0.9"/>
+            <!-- arms raised celebration -->
+            <path d="M82,52 Q64,40 56,28" stroke="#f5c8a0" stroke-width="11" stroke-linecap="round" fill="none"/>
+            <path d="M122,52 Q140,40 148,28" stroke="#f5c8a0" stroke-width="11" stroke-linecap="round" fill="none"/>
+            <circle cx="97" cy="24" r="3" fill="#1a1a1a"/>
+            <circle cx="107" cy="24" r="3" fill="#1a1a1a"/>
+            <path d="M96,34 Q102,39 108,34" fill="none" stroke="#a07040" stroke-width="1.3"/>
+            <!-- Person 4 -->
+            <rect x="136" y="72" width="11" height="44" rx="4" fill="#8080c0" opacity="0.8"/>
+            <rect x="149" y="74" width="11" height="42" rx="4" fill="#8080c0" opacity="0.8"/>
+            <rect x="130" y="42" width="32" height="36" rx="8" fill="#8888b8" opacity="0.85"/>
+            <ellipse cx="146" cy="31" rx="14" ry="16" fill="#f8d0b0"/>
+            <ellipse cx="146" cy="18" rx="14" ry="8" fill="#2a1808" opacity="0.85"/>
+            <path d="M162,56 Q174,44 180,34" stroke="#f8d0b0" stroke-width="10" stroke-linecap="round" fill="none"/>
+            <circle cx="142" cy="31" r="2.5" fill="#1a1a1a"/>
+            <circle cx="150" cy="31" r="2.5" fill="#1a1a1a"/>
+            <path d="M141,40 Q146,44 151,40" fill="none" stroke="#a07040" stroke-width="1.2"/>
+            <!-- Person 5 (right) -->
+            <rect x="170" y="76" width="10" height="40" rx="4" fill="#c060a0" opacity="0.8"/>
+            <rect x="182" y="78" width="10" height="38" rx="4" fill="#c060a0" opacity="0.8"/>
+            <rect x="166" y="48" width="30" height="32" rx="7" fill="#c060a0" opacity="0.85"/>
+            <ellipse cx="181" cy="38" rx="13" ry="14" fill="#f5c8a0"/>
+            <!-- longer hair -->
+            <ellipse cx="181" cy="26" rx="13" ry="7" fill="#1a0808" opacity="0.9"/>
+            <path d="M181,26 Q194,36 192,52" fill="none" stroke="#1a0808" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+            <path d="M196,62 Q204,50 206,40" stroke="#f5c8a0" stroke-width="9" stroke-linecap="round" fill="none"/>
+            <circle cx="177" cy="38" r="2" fill="#1a1a1a"/>
+            <circle cx="185" cy="38" r="2" fill="#1a1a1a"/>
+            <path d="M176,46 Q181,50 186,46" fill="none" stroke="#a07040" stroke-width="1.1"/>
+            <!-- confetti -->
+            <circle cx="56" cy="26" r="3" fill="#f5a623" opacity="0.7"><animate attributeName="cy" values="26;18;26" dur="1.5s" repeatCount="indefinite"/></circle>
+            <circle cx="148" cy="26" r="3" fill="#2d2dff" opacity="0.7"><animate attributeName="cy" values="26;18;26" dur="1.8s" repeatCount="indefinite"/></circle>
+            <circle cx="102" cy="4" r="4" fill="#f5a623" opacity="0.8"><animate attributeName="cy" values="4;-4;4" dur="1.2s" repeatCount="indefinite"/></circle>
+          </svg>
+          <span class="sc-badge bs">BUNDLE</span>
+        </div>
+        <div class="sc-body">
+          <div class="stars">★★★★★ <span class="star-ct">(33)</span></div>
+          <h4>Complete Bundle: All 5 Guides</h4>
+          <p>The full Prutendas library at a significant discount. Lifetime updates included.</p>
+          <div class="sc-footer"><div class="price">£39.99 <s>£65.95</s></div><button class="btn-buy">Add to Cart</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="nl-widget">
+    <h3>The Prutendas Weekly</h3>
+    <p>In-depth analysis on AI and jobs delivered every Thursday. 38,000 subscribers.</p>
+    <input type="email" placeholder="Your email address">
+    <button>Subscribe Free →</button>
+  </div>
+  <div class="social-widget">
+    <h3>Follow Us</h3>
+    <div class="soc-row">
+      <a href="https://twitter.com" target="_blank" class="soc-btn sb-x"><span class="sb-ico">𝕏</span> Twitter / X <span class="sb-ct">12.4k</span></a>
+      <a href="https://linkedin.com" target="_blank" class="soc-btn sb-li"><span class="sb-ico">💼</span> LinkedIn <span class="sb-ct">8.9k</span></a>
+      <a href="https://instagram.com" target="_blank" class="soc-btn sb-ig"><span class="sb-ico">📸</span> Instagram <span class="sb-ct">5.2k</span></a>
+      <a href="https://tiktok.com" target="_blank" class="soc-btn sb-tt"><span class="sb-ico">🎵</span> TikTok <span class="sb-ct">22k</span></a>
+      <a href="https://youtube.com" target="_blank" class="soc-btn sb-yt"><span class="sb-ico">▶️</span> YouTube <span class="sb-ct">4.1k</span></a>
+    </div>
+  </div>
+  <div class="sw">
+    <h3>Trending Articles</h3>
+    <a href="#" class="sw-link">🔥 Jobs AI will eliminate by 2030</a>
+    <a href="#" class="sw-link">📊 The AI salary premium: the data</a>
+    <a href="#" class="sw-link">🌍 Best countries for AI workers</a>
+    <a href="#" class="sw-link">⚖️ EU AI Act employment clauses</a>
+    <a href="#" class="sw-link">🎨 Designers vs generative AI</a>
+    <a href="#" class="sw-link">🧠 Why reskilling programmes fail</a>
+  </div>
+  <div class="shop-mini">
+    <h3>🛒 Featured Guides</h3>
+    <div class="m-prod">
+      <div class="mp-ico">
+        <svg viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg"><rect width="46" height="46" fill="#eeeeff" rx="8"/>
+        <ellipse cx="23" cy="16" rx="8" ry="9" fill="#f5c8a0"/>
+        <rect x="15" y="24" width="16" height="16" rx="5" fill="#2d2dff" opacity="0.8"/>
+        <path d="M15,30 Q8,34 6,40" stroke="#f5c8a0" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <path d="M31,30 Q38,34 40,40" stroke="#f5c8a0" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <path d="M16,32 Q10,28 8,24" stroke="#f5c8a0" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div><div class="mp-t">The AI-Proof Career Playbook</div><div class="mp-p">£14.99</div></div>
+    </div>
+    <div class="m-prod">
+      <div class="mp-ico">
+        <svg viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg"><rect width="46" height="46" fill="#edfaf3" rx="8"/>
+        <ellipse cx="23" cy="14" rx="8" ry="8" fill="#e8b888"/>
+        <rect x="15" y="22" width="16" height="18" rx="5" fill="#1a7a4a" opacity="0.8"/>
+        <!-- steps under feet -->
+        <rect x="6" y="38" width="12" height="6" rx="2" fill="#f5a623" opacity="0.4"/>
+        <rect x="17" y="32" width="12" height="12" rx="2" fill="#f5a623" opacity="0.5"/>
+        <rect x="28" y="26" width="12" height="18" rx="2" fill="#f5a623" opacity="0.65"/>
+        </svg>
+      </div>
+      <div><div class="mp-t">Salary Negotiation in the AI Era</div><div class="mp-p">£11.99</div></div>
+    </div>
+    <div class="m-prod">
+      <div class="mp-ico">
+        <svg viewBox="0 0 46 46" xmlns="http://www.w3.org/2000/svg"><rect width="46" height="46" fill="#fff8ec" rx="8"/>
+        <!-- 3 small people -->
+        <ellipse cx="12" cy="18" rx="6" ry="7" fill="#f5c8a0" opacity="0.8"/>
+        <rect x="7" y="24" width="10" height="16" rx="4" fill="#6868a8" opacity="0.75"/>
+        <ellipse cx="23" cy="15" rx="7" ry="8" fill="#e8b888" opacity="0.9"/>
+        <rect x="17" y="22" width="12" height="18" rx="4" fill="#f5a623" opacity="0.85"/>
+        <ellipse cx="34" cy="18" rx="6" ry="7" fill="#f8d0b0" opacity="0.8"/>
+        <rect x="29" y="24" width="10" height="16" rx="4" fill="#c060a0" opacity="0.8"/>
+        <circle cx="23" cy="8" r="5" fill="#f5a623" opacity="0.8"><animate attributeName="r" values="5;6.5;5" dur="1.5s" repeatCount="indefinite"/></circle>
+        </svg>
+      </div>
+      <div><div class="mp-t">Complete Bundle — All 5 Guides</div><div class="mp-p">£39.99</div></div>
+    </div>
+    <a href="#shop" class="btn-all">View All Guides →</a>
+  </div>
+  <div class="sw">
+    <h3>Free Resources</h3>
+    <a href="#" class="sw-link">📄 AI Impact Self-Assessment</a>
+    <a href="#" class="sw-link">🗺️ Sector Disruption Map</a>
+    <a href="#" class="sw-link">📊 2026 AI Jobs Report (PDF)</a>
+    <a href="#" class="sw-link">💬 Reskilling Checklist</a>
+  </div>
+</aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="f-logo"><span class="p">P</span>rutendas<span class="dot">.</span></div>
+        <p>Independent analysis of AI's impact on employment, careers, and the future of work.</p>
+        <div class="f-socials">
+          <a href="https://twitter.com" target="_blank" class="fs-ico">𝕏</a>
+          <a href="https://linkedin.com" target="_blank" class="fs-ico">in</a>
+          <a href="https://instagram.com" target="_blank" class="fs-ico">📸</a>
+          <a href="https://tiktok.com" target="_blank" class="fs-ico">🎵</a>
+          <a href="https://youtube.com" target="_blank" class="fs-ico">▶</a>
+        </div>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-col"><h4>Articles</h4><a href="#">Automation</a><a href="#">Job Displacement</a><a href="#">New AI Roles</a><a href="#">Reskilling</a><a href="#">Salaries &amp; Data</a></div>
+        <div class="footer-col"><h4>Shop</h4><a href="#">AI-Proof Career Playbook</a><a href="#">30-Day Reskilling Plan</a><a href="#">Salary Negotiation Guide</a><a href="#">Manager's Guide</a><a href="#">Complete Bundle</a></div>
+        <div class="footer-col"><h4>Resources</h4><a href="#">Free Downloads</a><a href="#">AI Jobs Report</a><a href="#">Sector Maps</a><a href="#">Newsletter</a><a href="#">Podcast</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="#">About Prutendas</a><a href="#">Editorial Team</a><a href="#">Advertise</a><a href="#">Contact</a><a href="#">Write for Us</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Prutendas.com · All rights reserved.</div>
+      <div class="f-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Cookie Settings</a><a href="#">Accessibility</a></div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
